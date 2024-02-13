@@ -1,5 +1,5 @@
 
-import {  Dispatch, FunctionComponent, MouseEvent, SetStateAction, createContext,  useReducer, useState } from "react"
+import {   createContext} from "react"
 import Header from "../components/header/page"
 import ContactMe from "../pages/Contact/page"
 import TechniquesPage from "../pages/Techniques/page"
