@@ -1,4 +1,3 @@
-import Header from "@/app/components/header/page";
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Styles from "./AboutMe.module.css";
@@ -7,7 +6,6 @@ import ChangeSectionBtn from "@/app/components/change_section/main";
 import First_semester from "./Data/first_semester.";
 import Second_semester from "./Data/second_semester";
 import { InfoContext } from "@/app/Layout/page";
-import { Global } from "@emotion/react";
 import ButtonComp from "@/app/components/btn/comp";
 
 export default function AboutMe() {

@@ -1,4 +1,5 @@
 
+"use client"
 import {   createContext} from "react"
 import Header from "../components/header/page"
 import ContactMe from "../pages/Contact/page"
