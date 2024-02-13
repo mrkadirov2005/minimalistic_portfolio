@@ -15,7 +15,7 @@ export default function Languages({languages:languages}:PROPS) {
     `
   return (
     <LanguagesContainer>
-        {languages.map(item=><li>
+        {languages.map(item=><li key={item}>
          {item}
         </li>)}
     </LanguagesContainer>

@@ -65,7 +65,7 @@ text-decoration: underline;
  return (
     <Container>
        {sortedArray.map(project=>{
-        return(<Project>
+        return(<Project key={project.name}>
             <h3>{project.name}</h3>
             <div className="date_details">
                 <p>{project.title} | {project.date}</p>
