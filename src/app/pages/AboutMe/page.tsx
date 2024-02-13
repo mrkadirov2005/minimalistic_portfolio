@@ -1,3 +1,4 @@
+"use client"
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Styles from "./AboutMe.module.css";
@@ -9,6 +10,7 @@ import { InfoContext } from "@/app/Layout/page";
 import ButtonComp from "@/app/components/btn/comp";
 
 export default function AboutMe() {
+  
   const [section,setSection]=useState<number>(1)
   const [semester,setSemester]=useState<number>(1)
 
@@ -21,7 +23,6 @@ color: ${background==false?GlobalStylesInstance._p.light.color:GlobalStylesInsta
 display: flex;
 align-items: center;
 justify-content: space-between;
-
 border: 2px solid grey;
 padding: 15px 0;
 padding-bottom: 100px;

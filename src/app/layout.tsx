@@ -1,11 +1,6 @@
-"use client"
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "./components/header/page";
-import Link from "next/link";
-import styled from "styled-components";
-import { GlobalStylesInstance } from "@/DATA/settings/Global";
 
 const inter = Inter({ subsets: ["latin"] });
 
