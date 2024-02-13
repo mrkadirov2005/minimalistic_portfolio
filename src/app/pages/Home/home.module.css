@@ -1,0 +1,43 @@
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+}
+.img_section{
+    height: 500px;
+    width:96%; 
+    background-image: url("__home_page/Bitmap.png") !important;
+    position: relative;
+}
+.Heading{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    margin: 0;
+}
+.my_img{
+    width: 540px;
+    height: 600px;
+    background-image: url("./__home_page//my_app.jpg");
+}
+.about_me_page{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 96%;
+    margin-top: 100px;
+}
+.my_desc{
+    width: 35%;
+}
+.contact_me_section{
+    display: flex;
+    width: 96%;
+    align-items: center;
+    justify-content: space-between;
+    margin: 95px 0;
+    
+}

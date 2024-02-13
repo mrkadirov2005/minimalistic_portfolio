@@ -1,0 +1,59 @@
+.AboutContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: transparent;
+    margin: 50px 0px;
+    width: 100%;
+
+}
+.description{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: green; */
+    width: 96%;
+    height: auto;
+}
+.description_image{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: url("../Home//__home_page/my_app.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 370px;
+    height: 358px;
+}
+
+.description_details{
+    width: 40%;
+    /* background-color: green; */
+
+}
+.details{
+    border: 2px solid grey;
+    width: 20%;;
+
+}
+.navigator{
+    display: flex;
+    width: 100%;
+}
+.section_navigator{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    justify-content: space-between;
+}
+.university_img{
+    width: 400px;
+    height: 400px;
+    background-image: url("./Data/photo_2024-02-06_15-27-23.jpg");
+    background-position: center;
+    background-size: cover;
+    background-clip: border-box;
+}
+

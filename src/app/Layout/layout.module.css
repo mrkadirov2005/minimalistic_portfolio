@@ -1,0 +1,6 @@
+.layout_container{
+    display: flex;
+    align-items: center;
+    width: 1540px;
+    flex-direction: column;
+}
