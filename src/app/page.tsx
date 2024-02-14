@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useReducer } from "react";
 import Layout from "./Layout/page";
 import reducer, { initialState } from "./Reducers/reducers"

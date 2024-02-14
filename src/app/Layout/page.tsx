@@ -1,3 +1,4 @@
+"use client"
 import React, { createContext, Dispatch } from "react";
 import Header from "../components/header/page";
 import ContactMe from "../pages/Contact/page";
