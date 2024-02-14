@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { useContext, useState } from "react"
 import { InfoContext } from "@/app/Layout/page"
 import Features from "@/app/components/Features/main"
+import Git_Net from "@/app/components/github_netlify/page"
 export default function ProjectComp() {
    const info=useContext(InfoContext)
    const background=info.tools.state.background
@@ -68,15 +69,14 @@ text-decoration: underline;
         return(<Project key={project.name}>
             <h3>{project.name}</h3>
             <div className="date_details">
-                <p>{project.title} | {project.date}</p>
+               <p>{project.title} | {project.date}</p>
             </div>
-            <Linker href={project.Github} className="github_link">check out {project.name} code on <Github href={project.Github}> <button>Github</button> </Github></Linker>
-            {/* TODO create a button component for github and netlify */}
+            <Linker href={project.Github} className="github_link">check out {project.name} code on <Github href={project.Github}> <Git_Net text="Github"/></Github></Linker>
             <article className="description">{project.info}</article>
             <Paragraph >languages</Paragraph>
             <Features details={project.details}/>
             <Languages languages={project.languages} />
-           see preview on{project.netlify?<Linker className={Styles.linker} target="_blank" href={project.netlify}>netlify</Linker>:(project.vercel)?<Linker className={Styles.linker} target="_blank" href={project.vercel}>vercel</Linker>:""}
+           see preview on{project.netlify?<Linker className={Styles.linker} target="_blank" href={project.netlify}><Git_Net text="Netlify"/></Linker>:(project.vercel)?<Linker className={Styles.linker} target="_blank" href={project.vercel}><Git_Net text="Vercel"/></Linker>:""}
         </Project>)
        })}
     </Container>

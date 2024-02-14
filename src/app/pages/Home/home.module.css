@@ -10,6 +10,9 @@
     width:96%; 
     background-image: url("__home_page/Bitmap.png") !important;
     position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .Heading{
     position: absolute;

@@ -13,10 +13,10 @@ import FooterComp from "../components/footer/page"
 
 
 export type infoContent={
-  tools:{state:object,dispatch:any},
+  tools:{state:any,dispatch:any},
 }
 
-export const InfoContext=createContext<infoContent>({
+ const InfoContext=createContext<infoContent>({
   tools:{
     state:{},
     dispatch:"",
@@ -53,6 +53,7 @@ const page=state.page
   return GlobalContent
 }
 
+export const infoContext=InfoContext
 export default Layout
 
 
