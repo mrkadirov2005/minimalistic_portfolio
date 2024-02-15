@@ -1,6 +1,7 @@
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
-import { InfoContext } from '@/app/Layout/page'
-import React, { Children, useContext } from 'react'
+import { Basics } from '@/app/Reducers/reducers'
+import React  from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 interface PROPS{
@@ -8,8 +9,11 @@ interface PROPS{
     page:string
 }
 export default function ButtonComp({text:text,page:page}:PROPS) {
-    const info=useContext(InfoContext)
-    const background=info.tools.state.background
+    const info=useSelector(Basics)
+    const dispatch=useDispatch()
+    const background=info.basics.background
+
+
     const Button=styled.div`
     background-color: ${background==true?GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX:GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
     width:176px;
@@ -23,7 +27,7 @@ export default function ButtonComp({text:text,page:page}:PROPS) {
     cursor: pointer;
     `
   return (
-    <Button  onClick={()=>info.tools.dispatch({type:"set_page",payload:page})}>
+    <Button  onClick={()=>dispatch({type:"set_page",payload:page})}>
  {text}
     </Button>
   )

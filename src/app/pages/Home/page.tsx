@@ -1,13 +1,15 @@
+"use client"
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
-import { InfoContext } from '@/app/Layout/page'
 import Styles from "@/app/pages/Home/home.module.css"
 import ButtonComp from '@/app/components/btn/comp'
+import { useSelector } from 'react-redux'
+import { Basics } from '@/app/Reducers/reducers'
 
 export default function HomePage() {
-  const info=useContext(InfoContext)
-  const background=info.tools.state.background
+  const info=useSelector(Basics)
+  const background=info.basics.background
   
   const colorSystem= background==true?GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX:GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX
 

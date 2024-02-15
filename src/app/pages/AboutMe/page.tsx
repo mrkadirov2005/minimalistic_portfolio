@@ -6,16 +6,17 @@ import { GlobalStylesInstance } from "@/DATA/settings/Global";
 import ChangeSectionBtn from "@/app/components/change_section/main";
 import First_semester from "./Data/first_semester.";
 import Second_semester from "./Data/second_semester";
-import { InfoContext } from "@/app/Layout/page";
 import ButtonComp from "@/app/components/btn/comp";
+import { Basics } from "@/app/Reducers/reducers";
+import { useSelector } from "react-redux";
 
 export default function AboutMe() {
   
   const [section,setSection]=useState<number>(1)
   const [semester,setSemester]=useState<number>(1)
 
-const info=useContext(InfoContext)
-const background=info.tools.state.background
+const info=useSelector(Basics)
+const background=info.basics.background
 
 const DescriptionContainer=styled.div`
 width: 80%;

@@ -4,21 +4,20 @@ import BasicSwitches from '../comp/toggler'
 import { Dispatch, useContext, useEffect, useReducer, useState } from 'react'
 import styled from 'styled-components'
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
-import reducer, { initialState } from "../../Reducers/reducers"
-import { InfoContext } from '@/app/Layout/page'
-
+import { set_page,set_background } from '@/app/Reducers/slices'
+import { RootState } from '@/app/Reducers/reducers'
+import { useDispatch, useSelector } from 'react-redux'
 
 interface PROPS{
 state:any,
 dispatch:any
 }
 export default function Header() {
+  const info=useSelector((state:RootState)=>state)
 
-const info=useContext(InfoContext)
-const background=info.tools.state.background
-const dispatch=info.tools.dispatch
-const state=info.tools.state
-
+const background=info.basics.background
+const dispatch=useDispatch()
+const state=info.basics
 
 
 const Header=styled.header`
@@ -50,14 +49,14 @@ console.log(GlobalStylesInstance.H1)
     <ul className={Styles.nav_ul}>
         
 
-        <li className={Styles.li_item}> <Button onClick={()=>{dispatch({type:"set_page",payload:"home"})}} className={Styles.next_Link} >home</Button></li>
-        <li className={Styles.li_item}> <Button onClick={()=>dispatch({type:"set_page",payload:"about_me"})} className={Styles.next_Link} >about me</Button></li>
-        <li className={Styles.li_item}> <Button onClick={()=>dispatch({type:"set_page",payload:"projects"})} className={Styles.next_Link} >projects</Button></li>
-        <li className={Styles.li_item}> <Button onClick={()=>dispatch({type:"set_page",payload:"techniques"})}  className={Styles.next_Link} >techniques</Button></li>
+        <li className={Styles.li_item}> <Button onClick={()=>{dispatch(set_page("home"))}} className={Styles.next_Link} >home</Button></li>
+        <li className={Styles.li_item}> <Button onClick={()=>dispatch(set_page("about_me"))} className={Styles.next_Link} >about me</Button></li>
+        <li className={Styles.li_item}> <Button onClick={()=>dispatch(set_page("projects"))} className={Styles.next_Link} >projects</Button></li>
+        <li className={Styles.li_item}> <Button onClick={()=>dispatch(set_page("techniques"))}  className={Styles.next_Link} >techniques</Button></li>
          
     </ul>
     <BasicSwitches  />
-    <Button onClick={()=>dispatch({type:"set_page",payload:"contact"})}   className="contact-me" id="contact-me-button">contact me</Button>
+    <Button onClick={()=>dispatch(set_page("contact"))}   className="contact-me" id="contact-me-button">contact me</Button>
  
     </Header>
   )

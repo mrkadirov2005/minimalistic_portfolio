@@ -1,15 +1,15 @@
 import { GlobalStylesInstance } from "../../../../DATA/settings/Global"
 import Data from "./data.js"
 import Languages from "../../../components/Languages/main"
-import Styles from "../styles.module.css"
 import styled from "styled-components"
-import { useContext, useState } from "react"
-import { InfoContext } from "@/app/Layout/page"
 import Features from "@/app/components/Features/main"
 import Git_Net from "@/app/components/github_netlify/page"
+import { Basics } from "@/app/Reducers/reducers"
+import { useSelector } from "react-redux"
+import Styles from "../styles.module.css"
 export default function ProjectComp() {
-   const info=useContext(InfoContext)
-   const background=info.tools.state.background
+   const info=useSelector(Basics)
+   const background=info.basics.background
   const Projects=Data.data
   
 const sortedArray=[]
@@ -32,6 +32,14 @@ while(counter>0){
    align-items: center;
    justify-content: space-around;
   `
+  const Linker=styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color:${colorSystem} ;
+  padding: 5px 0px;
+  text-decoration: none;
+  `
 const Project=styled.div`
   width: 40%;
   border: 3px solid orange;
@@ -41,32 +49,28 @@ const Project=styled.div`
    transform: scale(1.02);
    background-color: #07637a;
    color: white;
+
+   
   }
    
 `
-const Linker=styled.a`
-display: flex;
-align-items: center;
-justify-content: flex-start;
-   color:${colorSystem} ;
-   /* border: 2px solid grey; */
-   padding: 5px 0px;
-   text-decoration: none;
-`
+
 const Github=styled.a`
    color: white;
 `
 const Paragraph=styled.span`
 color: ${colorSystem};
 padding: 15px 0px;
-text-decoration: underline;
+text-decoration: underline grey;
+line-height: 4px;
+letter-spacing: 5px;
 
 `
 
  return (
     <Container>
        {sortedArray.map(project=>{
-        return(<Project key={project.name}>
+        return(<Project key={project.name} className={Styles.animated_project}>
             <h3>{project.name}</h3>
             <div className="date_details">
                <p>{project.title} | {project.date}</p>

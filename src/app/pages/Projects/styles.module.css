@@ -1,0 +1,17 @@
+@keyframes onHover {
+    33%{
+        background-color: green;
+    }
+    66%{
+        background-color: red;
+    }
+    99%{
+        background-color: darkblue;
+    }
+}
+
+.animated_project:hover{
+    animation-name: onHover;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}

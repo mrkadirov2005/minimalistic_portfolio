@@ -17,6 +17,7 @@ export default function Content({type:type,percent:percent}:PROPS) {
     width: 99%;
     &:hover{
       background-color: #07637a;
+       
     }
     `
   return (

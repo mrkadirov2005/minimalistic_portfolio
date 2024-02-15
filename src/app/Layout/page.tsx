@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch } from "react";
+import React, {Dispatch } from "react";
 import Header from "../components/header/page";
 import ContactMe from "../pages/Contact/page";
 import TechniquesPage from "../pages/Techniques/page";
@@ -9,38 +9,26 @@ import Styles from "./layout.module.css";
 import styled from "styled-components";
 import { GlobalStylesInstance } from "@/DATA/settings/Global";
 import FooterComp from "../components/footer/page";
+import { useSelector,useDispatch } from "react-redux";
+import { set_page,set_background } from "../Reducers/slices";
+import { RootState } from "../Reducers/reducers";
 
-export type InfoContent = {
-  tools: {
-    state: any;
-    dispatch: Dispatch<any>;
-  };
-};
 
-export const InfoContext = createContext<InfoContent | undefined>(undefined);
-
-interface Props {
-  state: any;
-  dispatch: React.Dispatch<any>;
-}
-
-const Layout = ({ state, dispatch }: Props) => {
-  const background = state.background;
-  const page = state.page;
+const Layout = () => {
+  const state=useSelector((state:RootState)=>state)
+  const background=state.basics.background
+  const page=state.basics.page
 
   const LayOutContainer = styled.div`
-    background-color: ${background == true
-      ? GlobalStylesInstance._colors.primary.DarkBlue.HEX
-      : background == false
-      ? GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX
-      : GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
+    background-color: ${background == true? GlobalStylesInstance._colors.primary.DarkBlue.HEX: (background == false)? GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX: GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
     min-height: 94vh;
   `;
 
   const GlobalContent = (
-    <InfoContext.Provider value={{ tools: { state, dispatch } }}>
-      <LayOutContainer className={Styles.layout_container}>
+     <div>
+       <LayOutContainer className={Styles.layout_container}>
         <Header />
+        <button onClick={()=>console.log("hello")}>reset</button>
         {page == "home" ? (
           <HomePage />
         ) : page == "about_me" ? (
@@ -56,7 +44,7 @@ const Layout = ({ state, dispatch }: Props) => {
         )}
       </LayOutContainer>
       <FooterComp />
-    </InfoContext.Provider>
+     </div>
   );
 
   return GlobalContent;

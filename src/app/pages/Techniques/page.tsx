@@ -1,17 +1,20 @@
+"use client"
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
-import { InfoContext } from '@/app/Layout/page'
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Content from './technique_components/html'
 import Styles from "./Styles.module.css"
+import { useSelector } from 'react-redux'
+import { Basics } from '@/app/Reducers/reducers'
 
 export default function TechniquesPage() {
-  const info=useContext(InfoContext)
-const background=info.tools.state.background
+  const info=useSelector(Basics)
+const background=info.basics.background
   const TechniqueWrapper=styled.section`
     color:${background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
     
   `
+
    const Languages_container_div=styled.div`
    color:${background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
  `

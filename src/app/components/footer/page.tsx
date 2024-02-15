@@ -5,13 +5,16 @@ import styled from 'styled-components'
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
 import { InfoContext } from '@/app/Layout/page'
 import Links from "../links"
+import { useDispatch, useSelector } from "react-redux"
+import { Basics } from "@/app/Reducers/reducers"
+import { set_page } from "@/app/Reducers/slices"
 
 
 export default function FooterComp() {
 
- const info=useContext(InfoContext)
- const background=info.tools.state.background
-const dispatch=info.tools.dispatch
+ const info=useSelector(Basics)
+ const background=info.basics.background
+const dispatch=useDispatch()
 
 const Footer=styled.header`
   background-color: ${background?GlobalStylesInstance._colors.primary.GrayishDarkBlue.HEX:GlobalStylesInstance._colors.primary.DarkBlue.HEX};
@@ -41,11 +44,11 @@ console.log(GlobalStylesInstance.H1)
     <ul className={Styles.nav_ul}>
         
 
-         <Button onClick={()=>{dispatch( {type:"set_page",payload:"home"} )}} className={Styles.next_Link} >home</Button>
-         <Button onClick={()=>dispatch( {type:"set_page",payload:"aboutme"} )} className={Styles.next_Link} >about me</Button>
-         <Button onClick={()=>dispatch( {type:"set_page",payload:"projects"} )} className={Styles.next_Link} >projects</Button>
-         <Button onClick={()=>dispatch( {type:"set_page",payload:"techniques"} )}  className={Styles.next_Link} >techniques</Button>
-         <Button  onClick={()=>dispatch( {type:"set_page",payload:"contact"} )}  className="contact-me" id="contact-me-button">contact me</Button>
+         <Button onClick={()=>{dispatch( set_page("home"))}} className={Styles.next_Link} >home</Button>
+         <Button onClick={()=>dispatch( set_page("about_me"))} className={Styles.next_Link} >about me</Button>
+         <Button onClick={()=>dispatch( set_page("projects"))} className={Styles.next_Link} >projects</Button>
+         <Button onClick={()=>dispatch(set_page("techniques") )}  className={Styles.next_Link} >techniques</Button>
+         <Button  onClick={()=>dispatch(set_page("contact") )}  className="contact-me" id="contact-me-button">contact me</Button>
          
     </ul>
        <Links/>

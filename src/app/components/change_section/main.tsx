@@ -1,6 +1,7 @@
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
-import { InfoContext } from '@/app/Layout/page'
-import React, { Children, useContext } from 'react'
+import { RootState } from '@/app/Reducers/reducers'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 interface PROPS{
@@ -9,8 +10,9 @@ interface PROPS{
     type:string,
 }
 export default function ChangeSectionBtn({section_number:number,update_section:updater,type:type}:PROPS) {
-    const info=useContext(InfoContext)
-    const background=info.tools.state.background
+
+    const info=useSelector((state:RootState)=>state)
+    const background=info.basics.background
     const Button=styled.button`
     background-color: ${background==true?GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX:GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
     width:176px;

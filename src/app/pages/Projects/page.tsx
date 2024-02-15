@@ -1,12 +1,15 @@
+"use client"
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
 import { InfoContext } from '@/app/Layout/page'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import ProjectComp from './ProjectsComp/main'
+import { useSelector } from 'react-redux'
+import { Basics } from '@/app/Reducers/reducers'
 
 export default function Projects() {
-  const info =useContext(InfoContext)
-  const background=info.tools.state.background
+  const info =useSelector(Basics)
+  const background=info.basics.background
   const ProjectPageWrapper=styled.div`
       color:${background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
       width: 96%;

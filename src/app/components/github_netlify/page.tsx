@@ -1,18 +1,21 @@
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
-import { InfoContext } from '@/app/Layout/page'
-import React, { useContext } from 'react'
+import { Basics } from '@/app/Reducers/reducers'
+import React  from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 interface PROPS{
     text:string
 }
 export default function Git_Net({text:text}:PROPS) {
-    const info=useContext(InfoContext)
-const background=info.tools.state.background
+    const info=useSelector(Basics)
+const background=info.basics.background
     const Button=styled.button`
-        padding: 2px;
-        margin: 7px 0px;
+        padding: 5px 10px;
+        margin: 7px 15px;
         background-color:${background?GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX:GlobalStylesInstance._colors.primary.DarkBlue.HEX} ;
+        color: white;
+
     `
   return (
     <Button>{text}</Button>

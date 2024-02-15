@@ -1,15 +1,17 @@
+"use client"
 import React, { useContext } from 'react'
 import Styles from "./contact.module.css"
 import styled from 'styled-components'
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
-import { InfoContext } from '@/app/Layout/page'
 import Links from '@/app/components/links'
 import SendMessage from '@/app/components/contactSendMessageComp/sendMessage'
+import { useSelector } from 'react-redux'
+import { Basics } from '@/app/Reducers/reducers'
 
 export default function ContactMe() {
-  const info=useContext(InfoContext)
+  const info=useSelector(Basics)
 
-const background=info.tools.state.background
+const background=info.basics.background
 
 
   const colorSystem=background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color
@@ -47,7 +49,7 @@ background-color: ${!background?"grey":"cyan"};
 <div className={Styles.contact_me_wrapper}>
 <Heading style={GlobalStylesInstance.H1}>Contact me</Heading>
 
-<form action="" className={Styles.form}>
+<form action="mailto:muzaffar571181@gmail.com" method='post' className={Styles.form}>
   <Label className={Styles.label}  htmlFor="name">Name</Label> 
   <Input className={Styles.input} type="text" id='name' required placeholder='Muzaffar Kadirov' />
 
