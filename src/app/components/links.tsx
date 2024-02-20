@@ -2,14 +2,17 @@ import React from "react";
 import Styles from "@/app/pages/Contact/contact.module.css";
 import styled from "styled-components";
 import Link from "next/link";
+
+const LinksContainer = styled.div`
+background-color: transparent;
+width: 100px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+`;
+
 export default function Links() {
-  const LinksContainer = styled.div`
-    background-color: transparent;
-    width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  `;
+
   return (
     <LinksContainer>
       <Link href={"https://github.com/"}>

@@ -1,115 +1,48 @@
-import React, {Dispatch } from "react";
+import React from "react";
 import Header from "../components/header/page";
-import ContactMe from "../pages/Contact/page";
-import TechniquesPage from "../pages/Techniques/page";
-import AboutMe from "../pages/AboutMe/page";
-import HomePage from "../pages/Home/page";
-import Projects from "../pages/Projects/page";
+
 import Styles from "./layout.module.css";
 import styled from "styled-components";
 import { GlobalStylesInstance } from "@/DATA/settings/Global";
 import FooterComp from "../components/footer/page";
-import { useSelector,useDispatch } from "react-redux";
-import { set_page,set_background } from "../Reducers/slices";
-import { RootState } from "../Reducers/reducers";
+import { useSelector } from "react-redux";
+import { Basics } from "../Reducers/reducers";
+import {  Outlet } from "react-router-dom";
+import Register from "../pages/Register_page/Register";
+
+const LayOutContainer = styled.div`
+background-color: ${(props)=>props.background == true? GlobalStylesInstance._colors.primary.DarkBlue.HEX: (props.background == false)? GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX: GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
+min-height: 94vh;
+width: 100%;
+`;
+
 
 
 const Layout = () => {
-  const state=useSelector((state:RootState)=>state)
-  const background=state.basics.background
-  const page=state.basics.page
+  const info=useSelector(Basics)
+  const background=info.basics.background
+  const page=info.basics.page
 
-  const LayOutContainer = styled.div`
-    background-color: ${background == true? GlobalStylesInstance._colors.primary.DarkBlue.HEX: (background == false)? GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX: GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
-    min-height: 94vh;
-  `;
+
 
   const GlobalContent = (
-     <div>
-       <LayOutContainer className={Styles.layout_container}>
+     
+       <LayOutContainer background={background} className={Styles.layout_container}>
         <Header />
-        <button onClick={()=>console.log("hello")}>reset</button>
-        {page == "home" ? (
-          <HomePage />
-        ) : page == "about_me" ? (
-          <AboutMe />
-        ) : page == "projects" ? (
-          <Projects />
-        ) : page == "techniques" ? (
-          <TechniquesPage />
-        ) : page == "contact" ? (
-          <ContactMe />
-        ) : (
-          ""
-        )}
-      </LayOutContainer>
+        <Outlet/>
       <FooterComp />
-     </div>
+      </LayOutContainer>
   );
+  
+  const getLoggingState=JSON.parse(localStorage.getItem("isLoggedIn"))
 
-  return GlobalContent;
+  return ( <div className={Styles.Wrapper}>
+   {/* { info.basics.isLoggedIn ?GlobalContent:<Register/>} */}
+   {GlobalContent}
+    </div>
+    )
 };
 
 export default Layout;
-
-
-
-
-// "use client"
-// import {   createContext} from "react"
-// import Header from "../components/header/page"
-// import ContactMe from "../pages/Contact/page"
-// import TechniquesPage from "../pages/Techniques/page"
-// import AboutMe from "../pages/AboutMe/page"
-// import HomePage from "../pages/Home/page"
-// import Projects from "../pages/Projects/page"
-// import Styles from "./layout.module.css"
-// import styled from "styled-components"
-// import { GlobalStylesInstance } from "@/DATA/settings/Global"
-// import FooterComp from "../components/footer/page"
-
-
-// export type infoContent={
-//   tools:{state:any,dispatch:any},
-// }
-// export const InfoContext=createContext<infoContent>({
-
-//   tools:{
-//     state:{},
-//     dispatch:"",
-//   }
-// })
-
-// interface PROPS{
-//   state:any,
-//   dispatch:any
-// }
-//  const Layout=({state,dispatch}:PROPS)=> {
- 
-// const background=state.background
-// const page=state.page
-
-//   const LayOutContainer=styled.div`
-//     background-color: ${background==true?GlobalStylesInstance._colors.primary.DarkBlue.HEX:(background==false)?GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX:GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
-//     min-height: 94vh;
-    
-//   `
-
-
-
-//   const GlobalContent= <InfoContext.Provider value={{tools:{state:state,dispatch:dispatch}}}>
-//     <LayOutContainer className={Styles.layout_container}>
-//  <Header />
-// {page=="home"?<HomePage/>:(page=="about_me")?<AboutMe/>:(page=="projects")?<Projects/>:(page=="techniques")?<TechniquesPage/>:(page=="contact")?<ContactMe/>:""}
- 
-// </LayOutContainer>
-// <FooterComp/>
-//   </InfoContext.Provider>
-
-    
-//   return GlobalContent
-// }
-
-// export default Layout
 
 

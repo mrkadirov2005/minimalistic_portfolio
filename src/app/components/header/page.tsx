@@ -1,63 +1,82 @@
 import Styles from '@/app/components/header/page.module.css'
-import Link from 'next/link'
+import {Link, useNavigate} from "react-router-dom"
 import BasicSwitches from '../comp/toggler'
-import { Dispatch, useContext, useEffect, useReducer, useState } from 'react'
 import styled from 'styled-components'
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
-import { set_page,set_background } from '@/app/Reducers/slices'
+import { set_isLoggedIn, set_page } from '@/app/Reducers/slices'
 import { RootState } from '@/app/Reducers/reducers'
 import { useDispatch, useSelector } from 'react-redux'
+import './responsive_styles.css'
 
 interface PROPS{
 state:any,
 dispatch:any
 }
+  const HeaderContainer=styled.header`
+    background-color: ${(props)=>props.background?GlobalStylesInstance._colors.primary.DarkBlue.HEX:GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
+  `
 export default function Header() {
   const info=useSelector((state:RootState)=>state)
 
 const background=info.basics.background
 const dispatch=useDispatch()
 const state=info.basics
+const navigate=useNavigate()
 
 
-const Header=styled.header`
-  background-color: ${background?GlobalStylesInstance._colors.primary.DarkBlue.HEX:GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
-`
-const Button=styled.button`
-color:${background?"white":"black"};
-background-color: transparent;
-border: none;
-font-size: large;
-text-transform: uppercase;
 
-`
 console.log(GlobalStylesInstance.H1)
+//TODO here in this place, An object was used instead of styled components
+const LinkStyles={
+  color: state.background?GlobalStylesInstance._p.dark.color:GlobalStylesInstance._p.light.color,
+  listStyle: 'none',
+  textDecoration: 'none',
+  textTransform: 'uppercase',
+}
 
-
+const handleToggler=()=>{
+  // const switcher=document.getElementById('switcher') as HTMLDivElement
+  const nav_ul=document.getElementById("nav_ul") as HTMLDivElement
+  const links_of_header=document.querySelectorAll('#header_link')
+  links_of_header.forEach((item)=>item.classList.toggle('mobile_header_links'))
+  nav_ul.classList.toggle('enabled')
+  // switcher.classList.toggle('enabled')
+  
+   
+}
 
 
 
 
 
   return (
-    <Header className={Styles.header}>
+    <HeaderContainer background={background} id='header' className={Styles.header}>
     <div>
-        <button className={Styles.routers}>🔼</button>
-      <button className={Styles.routers}>🔽</button>
+        <button >🔼</button>
+      <button >🔽</button>
         
     </div>
-    <ul className={Styles.nav_ul}>
+    <ul className={Styles.nav_ul} id='nav_ul'>
         
 
-        <li className={Styles.li_item}> <Button onClick={()=>{dispatch(set_page("home"))}} className={Styles.next_Link} >home</Button></li>
-        <li className={Styles.li_item}> <Button onClick={()=>dispatch(set_page("about_me"))} className={Styles.next_Link} >about me</Button></li>
-        <li className={Styles.li_item}> <Button onClick={()=>dispatch(set_page("projects"))} className={Styles.next_Link} >projects</Button></li>
-        <li className={Styles.li_item}> <Button onClick={()=>dispatch(set_page("techniques"))}  className={Styles.next_Link} >techniques</Button></li>
+       <Link id='header_link'  style={LinkStyles} to={"/"} >home</Link>
+       <Link id='header_link'  style={LinkStyles} to={"/about"}   >about me</Link>
+       <Link id='header_link'  style={LinkStyles} to={"/projects"} >projects</Link>
+       <Link id='header_link'  style={LinkStyles} to={"/techniques"} >techniques</Link>
+      <Link  id='header_link' to={"/contact"}   style={LinkStyles} id="contact-me-button">contact me</Link>
          
     </ul>
+    <button className={Styles.logout} id='logout' onClick={()=>{
+      dispatch(set_isLoggedIn(false))
+       localStorage.setItem("isLoggedIn",JSON.stringify(false))
+      navigate('/')
+      }}
+       
+       >sign out</button>
     <BasicSwitches  />
-    <Button onClick={()=>dispatch(set_page("contact"))}   className="contact-me" id="contact-me-button">contact me</Button>
+    <button className={Styles.toggler_header} onClick={()=>handleToggler()}> toggler header</button>
+
  
-    </Header>
+    </HeaderContainer>
   )
 }

@@ -1,6 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import  StateReducer  from "./slices";
 
+
+
+
 export const  Basicstore=configureStore({
   reducer:{
     basics:StateReducer

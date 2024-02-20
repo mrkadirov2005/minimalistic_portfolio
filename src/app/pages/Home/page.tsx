@@ -7,6 +7,19 @@ import ButtonComp from '@/app/components/btn/comp'
 import { useSelector } from 'react-redux'
 import { Basics } from '@/app/Reducers/reducers'
 
+const ImgSectionHeading=styled.h1`
+color:${(props)=>props.background==true?"white":"black" };
+background-color: ${(props)=>props.colorSystem};
+`
+const ProjectPart=styled.section`
+color: ${(props)=>props.background==true?"white":"black"};
+width: 40%;
+`
+const ClickOn=styled.h3`
+color:${(props)=>props.colorSystem}
+`
+
+
 export default function HomePage() {
   const info=useSelector(Basics)
   const background=info.basics.background
@@ -14,18 +27,7 @@ export default function HomePage() {
   const colorSystem= background==true?GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX:GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX
 
 
-  const ImgSectionHeading=styled.h1`
-    color:${background==true?"white":"black" };
-    background-color: ${colorSystem};
-    /* backgroundColor:${background==true?GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX:GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan} */
-  `
-  const ProjectPart=styled.section`
-  color: ${background==true?"white":"black"};
-  width: 40%;
-  `
-  const ClickOn=styled.h3`
-    color:${colorSystem}
-  `
+
   
   
 
@@ -34,7 +36,7 @@ export default function HomePage() {
       <div className={Styles.img_section}>
         
         <div className="diologue_box">
-        <ImgSectionHeading style={GlobalStylesInstance.H1} className={Styles.Heading}>
+        <ImgSectionHeading background={background} colorSystem={colorSystem} style={GlobalStylesInstance.H1} className={Styles.Heading}>
             Hey, My name is Muzaffar and I am a front-end developer</ImgSectionHeading>
         </div>
       </div>
@@ -48,8 +50,8 @@ export default function HomePage() {
         </div>
       </div>
       <section className={Styles.contact_me_section}>
-        <ProjectPart style={GlobalStylesInstance.H2}>Interested in doing a project with me?</ProjectPart>
-        <ClickOn style={GlobalStylesInstance.H3} >click on contact me button</ClickOn>
+        <ProjectPart background={background} style={GlobalStylesInstance.H2}>Interested in doing a project with me?</ProjectPart>
+        <ClickOn colorSystem={colorSystem} style={GlobalStylesInstance.H3} >click on contact me button</ClickOn>
         <ButtonComp text={"Contact Me"} page="contact"/>
       </section>
     </div>

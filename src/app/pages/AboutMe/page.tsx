@@ -10,6 +10,30 @@ import ButtonComp from "@/app/components/btn/comp";
 import { Basics } from "@/app/Reducers/reducers";
 import { useSelector } from "react-redux";
 
+const DescriptionContainer=styled.div`
+width: 80%;
+color: ${(props)=>props.background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color};
+display: flex;
+align-items: center;
+justify-content: space-between;
+border: 2px solid grey;
+padding: 15px 0;
+padding-bottom: 100px;
+`
+
+const EducationContainer=styled.div`
+  width: 80%;
+  display: flex;
+  align-items:center;
+  justify-content: space-around;
+  color: ${(props)=>props.background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color};
+  border: 2px solid grey;
+  padding: 15px 0px;
+  margin: 15px 0px;
+`
+
+
+
 export default function AboutMe() {
   
   const [section,setSection]=useState<number>(1)
@@ -18,26 +42,8 @@ export default function AboutMe() {
 const info=useSelector(Basics)
 const background=info.basics.background
 
-const DescriptionContainer=styled.div`
-width: 80%;
-color: ${background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color};
-display: flex;
-align-items: center;
-justify-content: space-between;
-border: 2px solid grey;
-padding: 15px 0;
-padding-bottom: 100px;
-`
-const EducationContainer=styled.div`
-  width: 80%;
-  display: flex;
-  align-items:center;
-  justify-content: space-around;
-  color: ${background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color};
-  border: 2px solid grey;
-  padding: 15px 0px;
-  margin: 15px 0px;
-`
+
+
 
 
 
@@ -45,7 +51,7 @@ const EducationContainer=styled.div`
   const Description=()=>{
    
     return (
-  <DescriptionContainer className={Styles.description}>
+  <DescriptionContainer background={background} className={Styles.description}> 
   <div className={Styles.description_image}></div>
 
   <div className={Styles.description_details}>
@@ -66,7 +72,7 @@ const EducationContainer=styled.div`
 
   const Education=()=>{
     return (
-      <EducationContainer >
+      <EducationContainer background={background} >
 
     <div >
       <span className="course_indicator">Course At:   </span>

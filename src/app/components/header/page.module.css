@@ -25,7 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 35%;
+    width: 50%;
 }
 .li_item{
     display: flex;
@@ -41,4 +41,40 @@
 .next_button{
     color: white;
     background-color: transparent;
+}
+
+.toggler_header{
+    display: none;
+}
+/* responsive */
+@media (max-width:1200px){
+   
+    .header{
+        background-color: grey;
+    }
+    .nav_ul{
+        width: 65%;
+    }
+}
+
+@media (max-width:800px){
+   
+   
+    .nav_ul{
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        background-color: grey;
+    }
+    .logout{
+        display: none;
+    }
+    .switcher{
+       position: absolute;
+       right: 150px;
+    }
+    .toggler_header{
+        display: block;
+    }
+    
 }

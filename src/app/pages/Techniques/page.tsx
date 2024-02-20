@@ -7,24 +7,27 @@ import Styles from "./Styles.module.css"
 import { useSelector } from 'react-redux'
 import { Basics } from '@/app/Reducers/reducers'
 
-export default function TechniquesPage() {
-  const info=useSelector(Basics)
-const background=info.basics.background
+
   const TechniqueWrapper=styled.section`
-    color:${background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
+    color:${(props)=>props.background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
     
   `
 
    const Languages_container_div=styled.div`
-   color:${background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
+   color:${(props)=>props.background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
  `
+
+export default function TechniquesPage() {
+  const info=useSelector(Basics)
+  const background=info.basics.background
+
   return (
   
-    <TechniqueWrapper>
+    <TechniqueWrapper background={background}>
       <h1 style={GlobalStylesInstance._H2}>
         Welcome to the techniques part of my portfolio.
       </h1>
-      <Languages_container_div className={Styles.languages_container}>
+      <Languages_container_div background={background} className={Styles.languages_container}>
       <h3 style={GlobalStylesInstance.H3}>Languages:</h3>
       <Content type='Uzbek' percent={85}/>
       <Content type='English' percent={77.7}/>

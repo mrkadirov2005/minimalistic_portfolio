@@ -1,8 +1,8 @@
 import React from 'react'
-import {rootState} from "./reducers"
+import {RootState} from "./reducers"
 export default function selector() {
   return (
     <div>selector</div>
   )
 }
-export const Basics=(state:rootState)=>state
+export const Basics=(state:RootState)=>state

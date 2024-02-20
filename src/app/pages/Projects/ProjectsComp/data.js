@@ -1,4 +1,4 @@
- const Data={
+ export const Data={
     "data": [
         {
             "name": "Ansormed",
@@ -189,7 +189,7 @@
             "date": "un/12/2022",
             "vercel": "https://myteam-lyart.vercel.app/",
             "details":{"responsive":false,"desktop":true,"mobile":true,"tablet":false},
-            "languages": ["HTML", "CSS", "JS", "REACT"]
+            "languages": ["HTML", "CSS", "JS", "REACT+Redux TK"]
         },
         {
             "name": "Glasses",
@@ -232,6 +232,25 @@
             "languages": ["HTML", "CSS", "JS", "REACT"]
         },
         {
+            "name": "weather_app",
+            "Github": "https://github.com/mrkadirov2005/search-weather",
+            "title": "real_api-connectted-app",
+            "info": "This is a project based weather and connected real api",
+            "date": "un/12/2023",
+            "details":{"responsive":false,"desktop":true,"mobile":true,"tablet":true},
+            "languages": ["HTML", "CSS", "JS", "REACT+Redux TK"]
+        },
+        {
+            "name":"Posts",
+            "Github":"https://github.com/mrkadirov2005/Dave_Gray_course_completion_todos",
+            "title":"Posts",
+            "info":"This is the portfolio I have Done after completing Dave Gray course on how to use Redux with React",
+            "date":"un/01-02/2024",
+            "vercel":"https://dave-gray-course-completion-todos.vercel.app/",
+            "details":{"responsive":true,"desktop":true,"mobile":true,"tablet":true},
+            "languages":["HTML","CSS","JS","React+Redux TK"]
+        },
+        {
             "name":"Minimalistic portfolio",
             "Github":"",
             "title":"portfolio",
@@ -239,8 +258,9 @@
             "date":"un/01-02/2024",
             "vercel":"",
             "details":{"responsive":false,"desktop":true,"mobile":true,"tablet":true},
-            "languages":["HTML","CSS","JS","TS","Next JS",]
-        }
+            "languages":["HTML","CSS","JS","React+Redux TK","TS","Next JS",]
+        },
+
     ]
 }
 

@@ -6,7 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 import { set_page, set_background } from '@/app/Reducers/slices';
 import { Basics } from '@/app/Reducers/reducers';
-
+import Styles from '../header/page.module.css'
+const Switcher=styled.div`
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+ 
 export default function BasicSwitches() {
 
 const info=useSelector(Basics)
@@ -18,15 +25,10 @@ const dispatch=useDispatch()
 
    }
   //  handleChange()
-const Switcher=styled.div`
-  width: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
+
     
   return (
-    <Switcher className='switcher'>
+    <Switcher className={Styles.switcher} id='switcher'>
       {/* <Switch {...label} defaultChecked /> */}
       <Switch checked={info.basics.background==true?true:false}  {...label} onChange={(event:React.ChangeEvent<HTMLInputElement>)=>handleChange(event)} /> {info.basics.background==true?"☀️":"🌛"}
       {/* <Switch {...label} disabled defaultChecked /> */}

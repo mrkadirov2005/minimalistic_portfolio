@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/DATA/module/info.js", "src/DATA/module/info.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/DATA/module/info.js", "src/DATA/module/info.js", "src/app/components/format_pswrd/format_str.js"],
   "exclude": ["node_modules"]
 }
