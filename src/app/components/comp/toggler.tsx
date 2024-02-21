@@ -1,12 +1,12 @@
-import React, { useState, ChangeEvent, useContext } from 'react';
+import React, { ChangeEvent } from 'react';
 import Switch from '@mui/material/Switch';
 import styled from 'styled-components';
 import { GlobalStylesInstance } from '@/DATA/settings/Global';
 import { useDispatch, useSelector } from 'react-redux';
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
-import { set_page, set_background } from '@/app/Reducers/slices';
-import { Basics } from '@/app/Reducers/reducers';
+import {  set_background } from '@/app/Reducers/slices';
 import Styles from '../header/page.module.css'
+import { background } from '@/app/Reducers/selector';
 const Switcher=styled.div`
   width: 50px;
   display: flex;
@@ -15,13 +15,12 @@ const Switcher=styled.div`
 `
  
 export default function BasicSwitches() {
-
-const info=useSelector(Basics)
+const backgroundIn:boolean=useSelector(background)
 const dispatch=useDispatch()
 
    const handleChange=(event:ChangeEvent<HTMLInputElement>)=>{
      GlobalStylesInstance.CurrentColor=`${event.target.checked==true?"black":"white"}`
-     return dispatch(set_background(!info.basics.background))
+     return dispatch(set_background(!backgroundIn))
 
    }
   //  handleChange()
@@ -30,7 +29,7 @@ const dispatch=useDispatch()
   return (
     <Switcher className={Styles.switcher} id='switcher'>
       {/* <Switch {...label} defaultChecked /> */}
-      <Switch checked={info.basics.background==true?true:false}  {...label} onChange={(event:React.ChangeEvent<HTMLInputElement>)=>handleChange(event)} /> {info.basics.background==true?"☀️":"🌛"}
+      <Switch checked={backgroundIn==true?true:false}  {...label} onChange={(event:React.ChangeEvent<HTMLInputElement>)=>handleChange(event)} /> {backgroundIn==true?"☀️":"🌛"}
       {/* <Switch {...label} disabled defaultChecked /> */}
       {/* <Switch {...label} disabled /> */}
     </Switcher>

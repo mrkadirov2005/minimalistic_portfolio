@@ -36,7 +36,7 @@ export default function HomePage() {
       <div className={Styles.img_section}>
         
         <div className="diologue_box">
-        <ImgSectionHeading background={background} colorSystem={colorSystem} style={GlobalStylesInstance.H1} className={Styles.Heading}>
+        <ImgSectionHeading background={background} colorSystem={colorSystem}  className={Styles.Heading}>
             Hey, My name is Muzaffar and I am a front-end developer</ImgSectionHeading>
         </div>
       </div>
@@ -50,8 +50,8 @@ export default function HomePage() {
         </div>
       </div>
       <section className={Styles.contact_me_section}>
-        <ProjectPart background={background} style={GlobalStylesInstance.H2}>Interested in doing a project with me?</ProjectPart>
-        <ClickOn colorSystem={colorSystem} style={GlobalStylesInstance.H3} >click on contact me button</ClickOn>
+        <ProjectPart className={Styles.interest_in_project} background={background} style={GlobalStylesInstance.H2}>Interested in doing a project with me?</ProjectPart>
+        <ClickOn className={Styles.clickOn} colorSystem={colorSystem} style={GlobalStylesInstance.H3} >click on contact me button</ClickOn>
         <ButtonComp text={"Contact Me"} page="contact"/>
       </section>
     </div>

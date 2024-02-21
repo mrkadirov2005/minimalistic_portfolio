@@ -1,5 +1,6 @@
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
 import { Basics } from '@/app/Reducers/reducers'
+import { background } from '@/app/Reducers/selector'
 import React, { useContext } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
@@ -13,14 +14,14 @@ interface PROPS{
 }
 
 const Illustrator=styled.div`
-    background-color: ${(props)=>props.background==false?GlobalStylesInstance._colors.primary.DarkBlue.HEX:GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX};
+    background-color: ${(props)=>props.bc==false?GlobalStylesInstance._colors.primary.DarkBlue.HEX:GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX};
     width: 100%;
     height: 25px;
 
 `
 const Filler=styled.div`
     width: ${(props)=>props.percent}%;
-    background-color:${(props)=>props.background==false?"darkblue":"green"};
+    background-color:${(props)=>props.bc==false?"darkblue":"green"};
     height: 25px;
     color: ${GlobalStylesInstance._p.dark.color};
     font-size: 15px;
@@ -29,13 +30,12 @@ const Filler=styled.div`
 `
 export default function Indicator ({type:type,percent:percent}:PROPS) {
 
-    const info=useSelector(Basics)
-    const background=info.basics.background
+    const bc=useSelector(background)
     const percentage=percent
 
     return (
-    <Illustrator background={background} title={type}>
-      <Filler percent={percentage} background={background} title={`${percent}`}>  {type}</Filler>  
+    <Illustrator bc={bc} title={type}>
+      <Filler percent={percentage} bc={bc} title={`${percent}`}>  {type}</Filler>  
     </Illustrator>
   )
 }

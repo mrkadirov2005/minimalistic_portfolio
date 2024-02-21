@@ -1,19 +1,21 @@
 import Styles from "@/app/components/footer/page.module.css"
-import Link from 'next/link'
 import styled from 'styled-components'
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
 import Links from "../links"
 import { useDispatch, useSelector } from "react-redux"
-import { Basics } from "@/app/Reducers/reducers"
-import { set_page } from "@/app/Reducers/slices"
 import { useNavigate } from "react-router-dom"
+import { background } from "@/app/Reducers/selector"
 
 
 const Footer=styled.header`
-  background-color: ${(props)=>props.background?GlobalStylesInstance._colors.primary.GrayishDarkBlue.HEX:GlobalStylesInstance._colors.primary.DarkBlue.HEX};
+  background-color: ${(props)=>props.info?GlobalStylesInstance._colors.primary.GrayishDarkBlue.HEX:GlobalStylesInstance._colors.primary.DarkBlue.HEX};
   color: ${GlobalStylesInstance._p.light.color};
   width: 96%;
   padding: 0 2%;
+  @media (max-width:800px){
+    flex-direction: column;
+    height: auto;
+  }
 `
 const Button=styled.button`
 background-color: transparent;
@@ -26,8 +28,7 @@ color: whitesmoke;
 
 export default function FooterComp() {
 
- const info=useSelector(Basics)
- const background=info.basics.background
+ const info=useSelector(background)
 const dispatch=useDispatch()
 const navigate=useNavigate()
 
@@ -36,8 +37,8 @@ const navigate=useNavigate()
 
 
   return (
-    <Footer background={background} className={Styles.header}>
-    <div>
+    <Footer info={info} className={Styles.header}>
+    <div className={Styles.indicators}>
         <button className={Styles.routers}>🔼</button>
       <button className={Styles.routers}>🔽</button>
         

@@ -13,6 +13,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-top: 25px;
 }
 .Heading{
     position: absolute;
@@ -20,6 +21,7 @@
     left: 0;
     width: 400px;
     margin: 0;
+    font-size: 45px;
 }
 .my_img{
     width: 540px;
@@ -43,4 +45,90 @@
     justify-content: space-between;
     margin: 95px 0;
     
+}
+.my_img{
+    width: 400px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+}
+
+
+@media(max-width:1000px){
+    .about_me_page{
+        flex-direction: column;
+    }
+   
+    .my_desc{
+        width: 80%;
+    }
+}
+
+@media(max-width:800px){
+    .img_section{
+        width: 100%;
+        font-size: 55px;
+        height: 250px;
+    }
+    .Heading{
+        width: 50%;
+        font-size: 30px;
+
+    }
+    .about_me_page{
+        flex-direction: column;
+        width: 80%;
+    }
+    .my_desc{
+        width:100%;
+    }
+    .my_img{
+        display: none;
+    }
+    .contact_me_section{
+        flex-direction: column;
+    }
+    .interest_in_project{
+
+    width: 100% !important;
+    }
+    .clickOn{
+        display: none;
+    }
+}
+
+
+
+@media(max-width:550px){
+    .img_section{
+        width: 100%;
+        font-size: 11px;
+        height: 250px;
+    }
+    .Heading{
+        width: 200px;
+        font-size: 25px;
+
+    }
+    .about_me_page{
+        flex-direction: column;
+        width: 80%;
+    }
+    .my_desc{
+        width:100%;
+    }
+    .my_img{
+        display: none;
+    }
+    .contact_me_section{
+        flex-direction: column;
+    }
+    .interest_in_project{
+
+    width: 100% !important;
+    }
+    .clickOn{
+        display: none;
+    }
 }

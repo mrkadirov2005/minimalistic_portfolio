@@ -66,3 +66,13 @@
     background-color: blue;
     /* background-color: trans; */
 }
+@media (max-width:800px){
+    .nav_ul{
+        width: 95%;
+        flex-wrap: wrap;
+    }
+    .indicators{
+        display: none;
+    }
+
+}

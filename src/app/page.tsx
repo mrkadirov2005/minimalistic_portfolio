@@ -18,14 +18,14 @@ export default function Home() {
           <Route path="/register" element={<Register/>}></Route>
           <Route element={<Layout/>}>
             <Route path="/" element={<HomePage/>}></Route>
-            <Route path="about" element={<AboutMe/>}>aboutme</Route>
-            <Route path="projects" element={<Projects/>}></Route>
-            <Route path="techniques" element={<TechniquesPage/>}></Route>
-            <Route path="contact" element={<ContactMe/>}></Route>
-            <Route path="*" element={<HomePage/>}></Route>
+            <Route path="/about" element={<AboutMe/>}></Route>
+            <Route path="/projects" element={<Projects/>}></Route>
+            <Route path="/techniques" element={<TechniquesPage/>}></Route>
+            <Route path="/contact" element={<ContactMe/>}></Route>
           </Route>
-              </Routes>
-              </BrowserRouter>
+          </Routes>
+          {/* <Route  path="*" element={<HomePage/>}></Route> */}
+          </BrowserRouter>
    
       </Provider>
   );

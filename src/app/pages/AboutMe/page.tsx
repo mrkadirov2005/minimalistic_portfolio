@@ -17,7 +17,8 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 border: 2px solid grey;
-padding: 15px 0;
+
+padding: 15px 0px;
 padding-bottom: 100px;
 `
 
@@ -28,7 +29,8 @@ const EducationContainer=styled.div`
   justify-content: space-around;
   color: ${(props)=>props.background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color};
   border: 2px solid grey;
-  padding: 15px 0px;
+
+  padding: 15px 10px;
   margin: 15px 0px;
 `
 
@@ -57,7 +59,7 @@ const background=info.basics.background
   <div className={Styles.description_details}>
    <h1 style={GlobalStylesInstance._H1} className="Description_heading"> About Me</h1>
 
-   <p className="description_passage">
+   <p className={Styles.description_passage}>
    Welcome to my portfolio page. Your visit to the page make me feel over the moon. This is the about page of my portfolio and I am a single guy born in 2005. I live in Uzbekistan, in the province of Samarkand. <br />
    However, currently, I am first_year student of (MU) Millat Umidi, international name is (CIU): Cambridge International University. I am majoring in IT sphere since I am mad about creating web pages and learning new and trending tools such as NextJs, React, JS, TS and others. <br />
    I am proficient in English and as a proof, I have got an IELTS band score of 7.

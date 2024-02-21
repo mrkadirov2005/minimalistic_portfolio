@@ -13,20 +13,29 @@ const MainContainer=styled.section`
 background-color: transparent;
 `
 const Heading=styled.h1`
-color: ${(props)=>props.colorSystem};
+color: ${(props)=>props.color};
 margin: 0;
+/* width: 50%; */
+margin-right: auto;
+margin-left:auto;
 `
 const Label=styled.label`
-color:${(props)=>props.colorSystem} ;
+color:${(props)=>props.color} ;
 `
 
 const Input=styled.input`
 background-color: ${(props)=>!props.background?"grey":"cyan"};
-color: ${(props)=>props.inputColorSystem};
+color: ${(props)=>props.inputcolor};
+@media (max-width:800px){
+  width: 80%;
+}
 `
 const Textarea=styled.textarea`
 background-color: ${(props)=>!props.background?"grey":"cyan"};
-color: ${(props)=>props.inputColorSystem};
+color: ${(props)=>props.inputcolor};
+@media (max-width:800px){
+  width: 80%;
+}
 `
 
 export default function ContactMe() {
@@ -35,14 +44,14 @@ export default function ContactMe() {
 const background=info.basics.background
 
 
-  const colorSystem=background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color
-  const inputColorSystem=false?GlobalStylesInstance._p.dark.color:GlobalStylesInstance._p.light.color
+  const color=background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color
+  const inputcolor=false?GlobalStylesInstance._p.dark.color:GlobalStylesInstance._p.light.color
  
 
   return (
-    <MainContainer colorSystem={colorSystem} className={Styles.main}>
+    <MainContainer color={color} className={Styles.main}>
 <div className={Styles.get__in_touch_info_part}>
-<Heading colorSystem={colorSystem} style={GlobalStylesInstance.H1}>Get in Touch</Heading>
+<Heading color={color} style={GlobalStylesInstance.H1}>Get in Touch</Heading>
 <div className={Styles.get_in_touch_container_manager}>
   <p className={Styles.paragraph} style={background?GlobalStylesInstance._p.dark:GlobalStylesInstance._p.light}>I’d love to hear about what you’re working on and how I could help. I’m currently looking for a new role and am open to a wide range of opportunities. My preference would be to find a position in a company in London. But I’m also happy to hear about opportunites that don’t fit that description. I’m a hard-working and positive person who will always approach each task with a sense of purpose and attention to detail. Please do feel free to check out my online profiles below and get in touch using the form.</p>
   <Links/>
@@ -50,17 +59,17 @@ const background=info.basics.background
 </div>
 
 <div className={Styles.contact_me_wrapper}>
-<Heading colorSystem={colorSystem} style={GlobalStylesInstance.H1}>Contact me</Heading>
+<Heading color={color} style={GlobalStylesInstance.H1}>Contact me</Heading>
 
 <form action="mailto:muzaffar571181@gmail.com" method='post' className={Styles.form}>
-  <Label colorSystem={colorSystem} className={Styles.label}  htmlFor="name">Name</Label> 
-  <Input background={background} inputColorSystem={inputColorSystem} className={Styles.input} type="text" id='name' required placeholder='Muzaffar Kadirov' />
+  <Label color={color} className={Styles.label}  htmlFor="name">Name</Label> 
+  <Input background={background} inputcolor={inputcolor} className={Styles.input} type="text" id='name' required placeholder='Muzaffar Kadirov' />
 
-  <Label colorSystem={colorSystem}  className={Styles.label} htmlFor="email">Email</Label>
-  <Input background={background} inputColorSystem={inputColorSystem} className={Styles.input} type="text" id='email' required placeholder='example@gmail.com' />
+  <Label color={color}  className={Styles.label} htmlFor="email">Email</Label>
+  <Input background={background} inputcolor={inputcolor} className={Styles.input} type="text" id='email' required placeholder='example@gmail.com' />
 
-  <Label colorSystem={colorSystem} className={Styles.label} htmlFor="message">Message</Label>
-  <Textarea background={background} inputColorSystem={inputColorSystem} className={Styles.textarea}  id='message' required placeholder="write your message here" />
+  <Label color={color} className={Styles.label} htmlFor="message">Message</Label>
+  <Textarea background={background} inputcolor={inputcolor} className={Styles.textarea}  id='message' required placeholder="write your message here" />
   <SendMessage/>
 </form>
 

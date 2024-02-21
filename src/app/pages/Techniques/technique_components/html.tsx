@@ -18,6 +18,11 @@ width: 99%;
   background-color: #07637a;
    
 }
+@media (max-width:800px){
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
 `
 export default function Content({type:type,percent:percent}:PROPS) {
  

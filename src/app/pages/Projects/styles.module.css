@@ -16,3 +16,14 @@
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
 }
+
+@media (max-width:850px){
+    .animated_project{
+        width: 80% !important;
+    }
+}
+@media (max-width:500px){
+    .animated_project{
+        width: 70% !important;
+    }
+}

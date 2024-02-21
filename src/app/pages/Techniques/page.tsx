@@ -5,35 +5,45 @@ import styled from 'styled-components'
 import Content from './technique_components/html'
 import Styles from "./Styles.module.css"
 import { useSelector } from 'react-redux'
-import { Basics } from '@/app/Reducers/reducers'
-
-
+import { background, data } from '@/app/Reducers/selector'
   const TechniqueWrapper=styled.section`
-    color:${(props)=>props.background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
+    color:${(props)=>props.bc==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
     
   `
 
    const Languages_container_div=styled.div`
-   color:${(props)=>props.background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
+   color:${(props)=>props.bc==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
  `
 
+const H3=styled.h3`
+  @media (max-width:800px){
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`
+const H1=styled.h1`
+   width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+`
 export default function TechniquesPage() {
-  const info=useSelector(Basics)
-  const background=info.basics.background
+  const bc=useSelector(background)
+  
 
   return (
   
-    <TechniqueWrapper background={background}>
-      <h1 style={GlobalStylesInstance._H2}>
+    <TechniqueWrapper bc={bc}>
+      <H1 style={GlobalStylesInstance._H2}>
         Welcome to the techniques part of my portfolio.
-      </h1>
-      <Languages_container_div background={background} className={Styles.languages_container}>
-      <h3 style={GlobalStylesInstance.H3}>Languages:</h3>
+      </H1>
+      <Languages_container_div bc={bc} className={Styles.languages_container}>
+      <H3 style={GlobalStylesInstance.H3}>Languages:</H3>
       <Content type='Uzbek' percent={85}/>
       <Content type='English' percent={77.7}/>
       </Languages_container_div>
 
-      <h3 style={GlobalStylesInstance._H3}> Skills</h3>
+      <H3 style={GlobalStylesInstance._H3} className={Styles.skills}> Skills</H3>
 
      <div className={Styles.content_container}>
        

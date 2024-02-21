@@ -57,3 +57,26 @@
     background-clip: border-box;
 }
 
+
+
+@media(max-width:850px){
+    .AboutContainer{
+        padding: 5px;
+    }
+    .description{
+        flex-direction: column;
+    }
+    .description_image{
+        display: none;
+    }
+    .description_passage{
+        width: 100%;
+    }
+    .description_details{
+        width: 80%;
+    }
+    .university_img{
+        display: none;
+    }
+
+}

@@ -7,6 +7,8 @@ import { set_isLoggedIn, set_page } from '@/app/Reducers/slices'
 import { RootState } from '@/app/Reducers/reducers'
 import { useDispatch, useSelector } from 'react-redux'
 import './responsive_styles.css'
+import Navigator from './navigator/navigator'
+import { background } from '@/app/Reducers/selector'
 
 interface PROPS{
 state:any,
@@ -16,11 +18,9 @@ dispatch:any
     background-color: ${(props)=>props.background?GlobalStylesInstance._colors.primary.DarkBlue.HEX:GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
   `
 export default function Header() {
-  const info=useSelector((state:RootState)=>state)
+  const info=useSelector(background)
 
-const background=info.basics.background
 const dispatch=useDispatch()
-const state=info.basics
 const navigate=useNavigate()
 
 
@@ -28,7 +28,7 @@ const navigate=useNavigate()
 console.log(GlobalStylesInstance.H1)
 //TODO here in this place, An object was used instead of styled components
 const LinkStyles={
-  color: state.background?GlobalStylesInstance._p.dark.color:GlobalStylesInstance._p.light.color,
+  color: info?GlobalStylesInstance._p.dark.color:GlobalStylesInstance._p.light.color,
   listStyle: 'none',
   textDecoration: 'none',
   textTransform: 'uppercase',
@@ -50,7 +50,7 @@ const handleToggler=()=>{
 
 
   return (
-    <HeaderContainer background={background} id='header' className={Styles.header}>
+    <HeaderContainer background={info} id='header' className={Styles.header}>
     <div>
         <button >🔼</button>
       <button >🔽</button>
@@ -59,11 +59,12 @@ const handleToggler=()=>{
     <ul className={Styles.nav_ul} id='nav_ul'>
         
 
-       <Link id='header_link'  style={LinkStyles} to={"/"} >home</Link>
-       <Link id='header_link'  style={LinkStyles} to={"/about"}   >about me</Link>
-       <Link id='header_link'  style={LinkStyles} to={"/projects"} >projects</Link>
-       <Link id='header_link'  style={LinkStyles} to={"/techniques"} >techniques</Link>
-      <Link  id='header_link' to={"/contact"}   style={LinkStyles} id="contact-me-button">contact me</Link>
+
+      <Navigator linkId='/' text='Home' />
+      <Navigator linkId='/about' text='About' />
+      <Navigator linkId='/projects' text='Projects' />
+      <Navigator linkId='/techniques' text='Resume' />
+      <Navigator linkId='/contact' text='Contact' />
          
     </ul>
     <button className={Styles.logout} id='logout' onClick={()=>{
@@ -74,7 +75,7 @@ const handleToggler=()=>{
        
        >sign out</button>
     <BasicSwitches  />
-    <button className={Styles.toggler_header} onClick={()=>handleToggler()}> toggler header</button>
+    <button className={Styles.toggler_header} onClick={()=>handleToggler()}> T</button>
 
  
     </HeaderContainer>

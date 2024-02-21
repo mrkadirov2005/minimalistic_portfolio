@@ -1,5 +1,6 @@
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
 import { RootState } from '@/app/Reducers/reducers'
+import { background } from '@/app/Reducers/selector'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
@@ -11,7 +12,7 @@ interface PROPS{
 }
 
 const Button=styled.button`
-background-color: ${(props)=>props.background==true?GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX:GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
+background-color: ${(props)=>props.backgroundIn==true?GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX:GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
 width:176px;
 height:48px;
 border: 2px solid grey;
@@ -19,14 +20,13 @@ align-items: center;
 display: flex;
 align-items: center;
 justify-content: center;
-color:${(props)=>props.background==true?"black":"black"};
+color:${(props)=>props.backgroundIn==true?"black":"black"};
 cursor: pointer;
 `
 
 export default function ChangeSectionBtn({section_number:number,update_section:updater,type:type}:PROPS) {
 
-    const info=useSelector((state:RootState)=>state)
-    const background=info.basics.background
+    const backgroundIn:boolean=useSelector(background)
    
     const handleData=():void=>{
         console.log(number)
@@ -48,7 +48,7 @@ export default function ChangeSectionBtn({section_number:number,update_section:u
         }
     }
   return (
-    <Button background={background}   onClick={()=>handleData()}>
+    <Button backgroundIn={backgroundIn}   onClick={()=>handleData()}>
     {type=="+"?"Next Section":(type=="-")?"previous Section":(type=="s+1")?"next semester":(type=="s-1")?"previous semester": ""}
     </Button>
   )

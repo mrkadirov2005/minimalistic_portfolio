@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Data from "../pages/Projects/ProjectsComp/data";
+import { Navigate } from "react-router-dom";
 
 interface State {
   background: boolean;
@@ -36,6 +37,8 @@ export const StateSlice=createSlice({
     reducers:{
         set_page:(state,action)=>{
         state.page=action.payload
+        window.location=`http://localhost:3000/${action.payload}`
+        
         },
         set_background:(state,action)=>{
           state.background=action.payload
@@ -55,6 +58,8 @@ export const StateSlice=createSlice({
         }
     }
 })
+
+
 
 export const {set_page,set_background,set_isSigned,set_user,set_isLoggedIn,set_error}=StateSlice.actions
 export default StateSlice.reducer
