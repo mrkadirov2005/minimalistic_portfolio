@@ -21,10 +21,6 @@ font-weight: bold;
 export default function Navigator({linkId,text}:PROPS) {
     const info=useSelector(background)
     const navigate=useNavigate()
-    // const navigate=useNavigate()
-    // const handleNavigator=(txt:string)=>{
-    //     return navigate(`${txt}`)
-    // }
   return (
     <Button background={info} onClick={()=>navigate(linkId)}>{text}</Button>
   )

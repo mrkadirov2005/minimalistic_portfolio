@@ -32,7 +32,6 @@ const LogginStatus:boolean=useSelector(isLoggedIn)
       </LayOutContainer>
   );
   
-  const getLoggingState=JSON.parse(localStorage.getItem("isLoggedIn"))
 
   return ( <div className={Styles.Wrapper}>
    {/* { LogginStatus ?GlobalContent:<Register/>} */}

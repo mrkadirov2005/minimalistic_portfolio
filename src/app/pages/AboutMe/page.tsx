@@ -9,6 +9,7 @@ import Second_semester from "./Data/second_semester";
 import ButtonComp from "@/app/components/btn/comp";
 import { Basics } from "@/app/Reducers/reducers";
 import { useSelector } from "react-redux";
+import Navigator from "@/app/components/header/navigator/navigator";
 
 const DescriptionContainer=styled.div`
 width: 80%;
@@ -65,7 +66,8 @@ const background=info.basics.background
    I am proficient in English and as a proof, I have got an IELTS band score of 7.
    For more info about me and the techniques I have possibility of dealing with, click on the button 👇 below.
    </p>
-   <ButtonComp text="More Details" page="techniques"/>
+   <Navigator linkId='/techniques' text='Resume' />
+
   </div>
 
 </DescriptionContainer>
