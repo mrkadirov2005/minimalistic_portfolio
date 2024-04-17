@@ -11,15 +11,15 @@ import { background, isLoggedIn, page } from "../Reducers/selector";
 const LayOutContainer = styled.div`
 background-color: ${(props)=>props.background == true? GlobalStylesInstance._colors.primary.DarkBlue.HEX: (props.background == false)? GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX: GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
 min-height: 94vh;
-width: 100%;
+width: 100vw;
+
+
 `;
 
 
 
 const Layout = () => {
   const backgroundMode:boolean=useSelector(background)
-  const pageMode:string=useSelector(page)
-const LogginStatus:boolean=useSelector(isLoggedIn)
 
 
   const GlobalContent = (
@@ -33,7 +33,6 @@ const LogginStatus:boolean=useSelector(isLoggedIn)
   
 
   return ( <div className={styles.wrapper}>
-   {/* { LogginStatus ?GlobalContent:<Register/>} */}
    {GlobalContent}
     </div>
     )

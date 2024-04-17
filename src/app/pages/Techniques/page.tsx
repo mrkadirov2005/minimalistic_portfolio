@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import { background, data } from '@/app/Reducers/selector'
   const TechniqueWrapper=styled.section`
     color:${(props)=>props.bc==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
+    width: 70%;
     
   `
 

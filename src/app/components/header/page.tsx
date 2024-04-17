@@ -67,13 +67,7 @@ const handleToggler=()=>{
       <Navigator linkId='/contact' text='Contact' />
          
     </ul>
-    <button className={Styles.logout} id='logout' onClick={()=>{
-      dispatch(set_isLoggedIn(false))
-       localStorage.setItem("isLoggedIn",JSON.stringify(false))
-      navigate('/')
-      }}
-       
-       >sign out</button>
+   
     <BasicSwitches  />
     <button className={Styles.toggler_header} onClick={()=>handleToggler()}> T</button>
 
