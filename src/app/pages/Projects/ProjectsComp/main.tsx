@@ -58,8 +58,13 @@ letter-spacing: 5px;
 
 export default function ProjectComp() {
    const bc=useSelector(background)
-
-  const Projects=useSelector(data).data
+interface Projectss{
+   data?:object[]
+}
+  
+  const ProjectsCollection=useSelector(data) as Projectss
+  let Projects=ProjectsCollection.data  as object[]
+  console.log("Projects are ", Projects)
   
 
 const sortedArray=[]
@@ -73,11 +78,21 @@ while(counter>0){
   
 
   const colors=bc?GlobalStylesInstance._p.dark.color:GlobalStylesInstance._p.light.color
-
+interface Project{
+   name:string,
+   Gitub:string,
+   netlify?:string,
+   vercel?:string,
+   title:string,
+   info:string,
+   date:string,
+   languages:object[],
+   details:object[]
+}
 
  return (
     <Container colors={colors}>
-       {sortedArray.map(project=>{
+       {sortedArray.map((project)=>{
         return(<Project key={project.name} className={Styles.animated_project}>
             <h3>{project.name}</h3>
             <div className="date_details">
