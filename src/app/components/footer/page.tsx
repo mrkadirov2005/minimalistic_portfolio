@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { background } from "@/app/Reducers/selector";
 import Links from "../links";
-
-const Footer = styled.footer`
+interface LocalProps{
+  info:boolean
+}
+const Footer = styled.footer<LocalProps>`
   background-color: ${(props) => props.info ? GlobalStylesInstance._colors.primary.GrayishDarkBlue.HEX : GlobalStylesInstance._colors.primary.DarkBlue.HEX};
   color: ${GlobalStylesInstance._p.light.color};
   width: 96%;
