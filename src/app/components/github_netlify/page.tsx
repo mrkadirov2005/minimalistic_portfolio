@@ -18,7 +18,7 @@ const Button=styled.button`
     `
 
  function Git_Net({text:text}:PROPS) {
-    const info=useSelector(background)
+    const info:boolean=useSelector(background)
     
   return (
     <Button info={info}>{text}</Button>
