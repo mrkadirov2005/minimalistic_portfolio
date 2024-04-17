@@ -7,7 +7,10 @@ import { useSelector } from "react-redux"
 import Styles from "../styles.module.css"
 import { background,data } from "@/app/Reducers/selector"
 
-const Container=styled.div`
+interface localProps{
+   colors?:string;
+}
+const Container=styled.div<localProps>`
 color: ${(props)=>props.colors};
 width: 100%;
 display: flex;
@@ -15,7 +18,7 @@ flex-wrap: wrap;
 align-items: center;
 justify-content: space-around;
 `
-const Linker=styled.a`
+const Linker=styled.a<localProps>`
 display: flex;
 align-items: center;
 justify-content: flex-start;
@@ -41,7 +44,7 @@ color: white;
 const Github=styled.a`
 color: white;
 `
-const Paragraph=styled.span`
+const Paragraph=styled.span<localProps>`
 color: ${(props)=>props.colors};
 padding: 15px 0px;
 text-decoration: underline grey;
