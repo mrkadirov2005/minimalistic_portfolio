@@ -16,11 +16,12 @@ const Button=styled.button`
 
     `
 
- export const Git_Net= function Git_Net({text:string}:propDetails) {
+ const Git_Net= function Git_Net({text:string}:propDetails) {
     const info:boolean=useSelector(background)
     
   return (
     <Button info={info}>{string}</Button>
   )
 }
+export default  Git_Net
  
