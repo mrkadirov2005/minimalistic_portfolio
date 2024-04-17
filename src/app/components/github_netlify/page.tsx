@@ -17,10 +17,11 @@ const Button=styled.button`
 
     `
 
-export default function Git_Net({text:text}:PROPS) {
+ function Git_Net({text:text}:PROPS) {
     const info=useSelector(background)
     
   return (
     <Button info={info}>{text}</Button>
   )
 }
+export default Git_Net
