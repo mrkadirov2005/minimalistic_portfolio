@@ -1,15 +1,11 @@
 import React from "react";
 import styled from 'styled-components';
 import { GlobalStylesInstance } from '@/DATA/settings/Global';
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { background } from "@/app/Reducers/selector";
 import Links from "../links";
-interface LocalProps{
-  info:boolean
-}
-const Footer = styled.footer<LocalProps>`
-  background-color: ${(props) => props.info ? GlobalStylesInstance._colors.primary.GrayishDarkBlue.HEX : GlobalStylesInstance._colors.primary.DarkBlue.HEX};
+
+const Footer = styled.footer`
+  background-color: ${ GlobalStylesInstance._colors.primary.GrayishDarkBlue.HEX };
   color: ${GlobalStylesInstance._p.light.color};
   width: 96%;
   padding: 0 2%;
@@ -32,12 +28,10 @@ const Button = styled.button`
 `;
 
 const FooterComp = () => {
-  const info = useSelector(background);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   return (
-    <Footer info={info}>
+    <Footer >
       <div className="indicators">
         <Button className="routers">🔼</Button>
         <Button className="routers">🔽</Button>

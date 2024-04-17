@@ -3,9 +3,8 @@ import Languages from "../../../components/Languages/main";
 import styled from "styled-components";
 import Features from "@/app/components/Features/main";
 import Git_Net from "@/app/components/github_netlify/git_page";
-import { useSelector } from "react-redux";
 import Styles from "../styles.module.css";
-import { background, data } from "@/app/Reducers/selector";
+import DataProjects from "./data"
 
 interface Project {
   name: string;
@@ -24,12 +23,10 @@ interface Project {
   };
 }
 
-interface LocalProps {
-  colors?: string;
-}
 
-const Container = styled.div<LocalProps>`
-  color: ${(props) => props.colors};
+
+const Container = styled.div`
+  color: ${"white"};
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -37,11 +34,11 @@ const Container = styled.div<LocalProps>`
   justify-content: space-around;
 `;
 
-const Linker = styled.a<LocalProps>`
+const Linker = styled.a`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  color: ${(props) => props.colors};
+  color: ${"white"};
   padding: 5px 0px;
   text-decoration: none;
 `;
@@ -62,8 +59,8 @@ const GithubLink = styled.a`
   color: white;
 `;
 
-const Paragraph = styled.span<LocalProps>`
-  color: ${(props) => props.colors};
+const Paragraph = styled.span`
+  color: ${"white"};
   padding: 15px 0px;
   text-decoration: underline grey;
   line-height: 4px;
@@ -71,8 +68,8 @@ const Paragraph = styled.span<LocalProps>`
 `;
 
 export default function ProjectComp() {
-  const bc = useSelector(background);
-  const projectsData = useSelector(data) as { data?: Project[] };
+  const bc = true
+  const projectsData = DataProjects as { data?: Project[] };
   const projects = projectsData.data || [];
 
   const colors = bc
@@ -80,7 +77,7 @@ export default function ProjectComp() {
     : GlobalStylesInstance._p.light.color;
 
   return (
-    <Container colors={colors}>
+    <Container >
       {projects.map((project) => (
         <ProjectBox key={project.name} className={Styles.animated_project}>
           <h3>{project.name}</h3>
@@ -89,7 +86,7 @@ export default function ProjectComp() {
               {project.title} | {project.date}
             </p>
           </div>
-          <Linker colors={colors} href={project.Github} className="github_link">
+          <Linker  href={project.Github} className="github_link">
             check out {project.name} code on{" "}
             <GithubLink href={project.Github}>
               {" "}
@@ -97,7 +94,7 @@ export default function ProjectComp() {
             </GithubLink>
           </Linker>
           <article className="description">{project.info}</article>
-          <Paragraph colors={colors}>Languages</Paragraph>
+          <Paragraph >Languages</Paragraph>
           <Features details={project.details} />
           <Languages languages={project.languages} />
           See preview on{" "}

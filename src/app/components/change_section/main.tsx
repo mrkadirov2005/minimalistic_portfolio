@@ -1,6 +1,5 @@
 import React from 'react';
 import { GlobalStylesInstance } from '@/DATA/settings/Global';
-import { background } from '@/app/Reducers/selector';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -10,15 +9,10 @@ interface Props {
   type: string;
 }
 
-interface LocalProps {
-  backgroundIn: boolean;
-}
 
-const Button = styled.button<LocalProps>`
-  background-color: ${(props) =>
-    props.backgroundIn
-      ? GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX
-      : GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
+
+const Button = styled.button`
+  background-color: ${GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX};
   width: 176px;
   height: 48px;
   border: 2px solid grey;
@@ -26,7 +20,7 @@ const Button = styled.button<LocalProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${(props) => (props.backgroundIn ? 'black' : 'black')};
+  color: ${ 'black'};
   cursor: pointer;
 `;
 
@@ -35,7 +29,7 @@ export default function ChangeSectionBtn({
   update_section,
   type,
 }: Props) {
-  const backgroundIn: boolean = useSelector(background);
+  const backgroundIn: boolean = true;
 
   const handleData = (): void => {
     console.log(section_number); // Corrected variable name
@@ -55,7 +49,7 @@ export default function ChangeSectionBtn({
   };
 
   return (
-    <Button backgroundIn={backgroundIn} onClick={handleData}>
+    <Button onClick={handleData}>
       {type === '+' ? 'Next Section' : type === '-' ? 'Previous Section' : type === 's+1' ? 'Next Semester' : type === 's-1' ? 'Previous Semester' : ''}
     </Button>
   );

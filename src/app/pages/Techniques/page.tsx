@@ -4,22 +4,17 @@ import React from 'react'
 import styled from 'styled-components'
 import Content from './technique_components/html'
 import Styles from "./Styles.module.css"
-import { useSelector } from 'react-redux'
-import { background, data } from '@/app/Reducers/selector'
-
-interface LocalProps{
-  bc: boolean;
-}
 
 
-  const TechniqueWrapper=styled.section<LocalProps>`
-    color:${(props)=>props.bc==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
+
+  const TechniqueWrapper=styled.section`
+    color:${GlobalStylesInstance._p.dark.color} ;
     width: 70%;
     
   `
 
-   const Languages_container_div=styled.div<LocalProps>`
-   color:${(props)=>props.bc==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
+   const Languages_container_div=styled.div`
+   color:${GlobalStylesInstance._p.dark.color} ;
  `
 
 const H3=styled.h3`
@@ -35,16 +30,16 @@ const H1=styled.h1`
     margin-right: auto;
 `
 export default function TechniquesPage() {
-  const bc=useSelector(background)
+  
   
 
   return (
   
-    <TechniqueWrapper bc={bc}>
+    <TechniqueWrapper >
       <H1 style={GlobalStylesInstance._H2}>
         Welcome to the techniques part of my portfolio.
       </H1>
-      <Languages_container_div bc={bc} className={Styles.languages_container}>
+      <Languages_container_div className={Styles.languages_container}>
       <H3 style={GlobalStylesInstance.H3}>Languages:</H3>
       <Content type='Uzbek' percent={85}/>
       <Content type='English' percent={77.7}/>
@@ -67,7 +62,6 @@ export default function TechniquesPage() {
         <Content type='Python' percent={40}/>
      </div>
 
-      {/* <h3 style={GlobalStylesInstance.H3}>Programming skils</h3> */}
 
      
     </TechniqueWrapper>

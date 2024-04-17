@@ -1,12 +1,10 @@
 "use client"
-import React, { useContext } from 'react'
+import React  from 'react'
 import Styles from "./contact.module.css"
 import styled from 'styled-components'
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
 import Links from '@/app/components/links'
 import SendMessage from '@/app/components/contactSendMessageComp/sendMessage'
-import { useSelector } from 'react-redux'
-import { Basics } from '@/app/Reducers/reducers'
 
 interface LocalProps{
   background: boolean;
@@ -27,28 +25,27 @@ color:${(props)=>props.color} ;
 `
 
 const Input=styled.input<LocalProps>`
-background-color: ${(props)=>!props.background?"grey":"cyan"};
-color: ${(props)=>props.inputcolor};
+background-color: ${"cyan"};
+color: ${"black"};
 @media (max-width:800px){
   width: 80%;
 }
 `
 const Textarea=styled.textarea<LocalProps>`
-background-color: ${(props)=>!props.background?"grey":"cyan"};
-color: ${(props)=>props.inputcolor};
+background-color: ${"cyan"};
+color: ${"black"};
 @media (max-width:800px){
   width: 80%;
 }
 `
 
 export default function ContactMe() {
-  const info=useSelector(Basics)
 
-const background=info.basics.background
+const background=true
 
 
-  const color=background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color
-  const inputcolor=background==false?GlobalStylesInstance._p.dark.color:GlobalStylesInstance._p.light.color
+  const color=GlobalStylesInstance._p.dark.color
+  const inputcolor=GlobalStylesInstance._p.light.color
  
 
   return (

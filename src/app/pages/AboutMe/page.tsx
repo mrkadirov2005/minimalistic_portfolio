@@ -6,21 +6,13 @@ import { GlobalStylesInstance } from "@/DATA/settings/Global";
 import ChangeSectionBtn from "@/app/components/change_section/main";
 import First_semester from "./Data/first_semester.";
 import Second_semester from "./Data/second_semester";
-import ButtonComp from "@/app/components/btn/comp";
-import { Basics } from "@/app/Reducers/reducers";
-import { useSelector } from "react-redux";
 import Navigator from "@/app/components/header/navigator/navigator";
 
-interface LocalProps {
-  background: boolean;
-}
 
-const DescriptionContainer = styled.div<LocalProps>`
+
+const DescriptionContainer = styled.div`
   width: 80%;
-  color: ${(props) =>
-    props.background == false
-      ? GlobalStylesInstance._p.light.color
-      : GlobalStylesInstance._p.dark.color};
+  color: ${GlobalStylesInstance._p.dark.color};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,15 +21,12 @@ const DescriptionContainer = styled.div<LocalProps>`
   padding-bottom: 100px;
 `;
 
-const EducationContainer = styled.div<LocalProps>`
+const EducationContainer = styled.div`
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  color: ${(props) =>
-    props.background == false
-      ? GlobalStylesInstance._p.light.color
-      : GlobalStylesInstance._p.dark.color};
+  color: ${GlobalStylesInstance._p.dark.color};
   border: 2px solid grey;
   padding: 15px 10px;
   margin: 15px 0px;
@@ -47,12 +36,11 @@ export default function AboutMe() {
   const [section, setSection] = useState<number>(1);
   const [semester, setSemester] = useState<number>(1);
 
-  const info = useSelector(Basics);
-  const background = info.basics.background;
+  const background =true;
 
   const Description = () => {
     return (
-      <DescriptionContainer background={background} className={Styles.description}>
+      <DescriptionContainer  className={Styles.description}>
         <div className={Styles.description_image}></div>
         <div className={Styles.description_details}>
           <h1 style={GlobalStylesInstance._H1} className="Description_heading">
@@ -80,7 +68,7 @@ export default function AboutMe() {
 
   const Education = () => {
     return (
-      <EducationContainer background={background}>
+      <EducationContainer >
         <div>
           <span className="course_indicator">Course At:   </span>
           <h1 style={GlobalStylesInstance._H1}>Cambridge International University</h1>

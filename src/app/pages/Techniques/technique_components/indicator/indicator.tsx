@@ -1,6 +1,4 @@
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
-import { Basics } from '@/app/Reducers/reducers'
-import { background } from '@/app/Reducers/selector'
 import React, { useContext } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
@@ -32,7 +30,7 @@ const Filler=styled.div<LocalProps>`
 `
 export default function Indicator ({type:type,percent:percent}:PROPS) {
 
-    const bc=useSelector(background)
+    const bc=true
     const percentage=percent
 
     return (

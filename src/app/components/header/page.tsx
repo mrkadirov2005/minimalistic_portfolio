@@ -1,25 +1,17 @@
 import Styles from '@/app/components/header/page.module.css';
-import { Link, useNavigate } from "react-router-dom";
-import BasicSwitches from '../comp/toggler';
 import styled from 'styled-components';
 import { GlobalStylesInstance } from '@/DATA/settings/Global';
-import { background } from '@/app/Reducers/selector';
 import Navigator from './navigator/navigator';
-import { useSelector } from 'react-redux';
 
-interface LocalProps {
-  background: boolean;
-}
 
-const HeaderContainer = styled.header<LocalProps>`
-  background-color: ${(props) => props.background ? GlobalStylesInstance._colors.primary.DarkBlue.HEX : GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
+
+const HeaderContainer = styled.header`
+  background-color: ${ GlobalStylesInstance._colors.primary.DarkBlue.HEX};
 `;
 
 
 export default function Header() {
 
-  const info = useSelector(background);
-  const navigate = useNavigate();
 
   const handleToggler = () => {
     const navUl = document.getElementById("nav_ul");
@@ -29,7 +21,7 @@ export default function Header() {
   };
 
   return (
-    <HeaderContainer background={info} id='header' className={Styles.header}>
+    <HeaderContainer id='header' className={Styles.header}>
       <div>
         <button>🔼</button>
         <button>🔽</button>
@@ -41,7 +33,7 @@ export default function Header() {
         <Navigator linkId='/techniques' text='Resume' />
         <Navigator linkId='/contact' text='Contact' />
       </ul>
-      <BasicSwitches />
+      {/* <BasicSwitches /> */}
       <button className={Styles.toggler_header} onClick={handleToggler}>T</button>
     </HeaderContainer>
   );

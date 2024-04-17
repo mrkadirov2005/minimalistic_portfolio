@@ -4,30 +4,20 @@ import styles from "@/app/Layout/layout.module.css";
 import styled from "styled-components";
 import { GlobalStylesInstance } from "@/DATA/settings/Global";
 import FooterComp from "../components/footer/page";
-import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
-import { background } from "../Reducers/selector"; // Remove unused imports
 
-interface LocalProps {
-  background: boolean;
-}
 
-const LayOutContainer = styled.div<LocalProps>`
-  background-color: ${(props) =>
-    props.background === true
-      ? GlobalStylesInstance._colors.primary.DarkBlue.HEX
-      : props.background === false
-      ? GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX
-      : GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
+
+const LayOutContainer = styled.div`
+  background-color: ${GlobalStylesInstance._colors.primary.DarkBlue.HEX};
   min-height: 94vh;
   width: 100vw;
 `;
 
 const Layout = () => {
-  const backgroundMode: boolean = useSelector(background);
 
   const GlobalContent = (
-    <LayOutContainer background={backgroundMode} className={styles.layout_container}>
+    <LayOutContainer className={styles.layout_container}>
       <Header />
       <Outlet />
       <FooterComp />

@@ -1,5 +1,3 @@
-import { background } from '@/app/Reducers/selector';
-import { set_page } from '@/app/Reducers/slices';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -10,25 +8,22 @@ interface Props {
   text: string;
 }
 
-interface LocalProps {
-  background: boolean;
-}
 
-const Button = styled.button<LocalProps>` 
-  background-color: transparent;
+const Button = styled.button` 
+  background-color: white;
   text-transform: uppercase;
   border: none;
-  color: ${props => props.background ? 'white' : 'black'};
+  color: ${ 'black' };
+  padding: 5px 15px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 `;
 
 export default function Navigator({ linkId, text }: Props) {
-  const info = useSelector(background);
   const navigate = useNavigate();
 
   return (
-    <Button background={info} onClick={() => navigate(linkId)}>
+    <Button onClick={() => navigate(linkId)}>
       {text}
     </Button>
   );

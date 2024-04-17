@@ -1,4 +1,4 @@
- export const Data={
+ export const DataProjects={
     "data": [
         {
             "name": "Ansormed",
@@ -264,4 +264,4 @@
     ]
 }
 
-export default Data
+export default DataProjects
