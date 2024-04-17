@@ -23,5 +23,5 @@ const Button=styled.button`
     <Button info={info}>{string}</Button>
   )
 }
-export default  Git_Net
+export default Git_Net
  
