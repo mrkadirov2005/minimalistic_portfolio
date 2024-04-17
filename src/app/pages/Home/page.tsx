@@ -13,7 +13,7 @@ import {ClickOn, ImgSectionHeading, ProjectPart} from "./styles"
 
 export default function HomePage() {
   const info=useSelector(Basics)
-  const background=info.basics.background
+  const background:boolean=info.basics.background
   
   const colorSystem= background==true?GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX:GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX
 
@@ -41,7 +41,7 @@ export default function HomePage() {
       </div>
       <section className={Styles.contact_me_section}>
         <ProjectPart className={Styles.interest_in_project} background={background} style={GlobalStylesInstance.H2}>Interested in doing a project with me?</ProjectPart>
-        <ClickOn className={Styles.clickOn} colorSystem={colorSystem} style={GlobalStylesInstance.H3} >click on contact me button</ClickOn>
+        <ClickOn background={background} className={Styles.clickOn} colorSystem={colorSystem} style={GlobalStylesInstance.H3} >click on contact me button</ClickOn>
         <ButtonComp text={"Contact Me"} page="contact"/>
         
       </section>
