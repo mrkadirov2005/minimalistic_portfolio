@@ -1,12 +1,11 @@
 import React from "react";
 import Header from "../components/header/page";
-import Styles from "./layout.module.css";
+import styles from "@/app/Layout/layout.module.css"
 import styled from "styled-components";
 import { GlobalStylesInstance } from "@/DATA/settings/Global";
 import FooterComp from "../components/footer/page";
 import { useSelector } from "react-redux";
 import {  Outlet } from "react-router-dom";
-import Register from "../pages/Register_page/Register";
 import { background, isLoggedIn, page } from "../Reducers/selector";
 
 const LayOutContainer = styled.div`
@@ -25,7 +24,7 @@ const LogginStatus:boolean=useSelector(isLoggedIn)
 
   const GlobalContent = (
      
-       <LayOutContainer background={backgroundMode} className={Styles.layout_container}>
+       <LayOutContainer background={backgroundMode} className={styles.layout_container}>
         <Header />
         <Outlet/>
       <FooterComp />
@@ -33,7 +32,7 @@ const LogginStatus:boolean=useSelector(isLoggedIn)
   );
   
 
-  return ( <div className={Styles.Wrapper}>
+  return ( <div className={styles.wrapper}>
    {/* { LogginStatus ?GlobalContent:<Register/>} */}
    {GlobalContent}
     </div>
