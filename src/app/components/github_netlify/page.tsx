@@ -4,7 +4,7 @@ import React  from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
-interface PROPS{
+interface propDetails{
     text:string
 }
 
@@ -16,11 +16,11 @@ const Button=styled.button`
 
     `
 
- const Git_Net= function Git_Net({text:text}:PROPS) {
+ const Git_Net= function Git_Net({text:string}:propDetails) {
     const info:boolean=useSelector(background)
     
   return (
-    <Button info={info}>{text}</Button>
+    <Button info={info}>{string}</Button>
   )
 }
 export default Git_Net
