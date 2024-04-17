@@ -1,5 +1,4 @@
 import { GlobalStylesInstance } from '@/DATA/settings/Global'
-import { Basics } from '@/app/Reducers/reducers'
 import { background } from '@/app/Reducers/selector'
 import React  from 'react'
 import { useSelector } from 'react-redux'

@@ -53,7 +53,7 @@ export default function TechniquesPage() {
         <Content type='TypeScript' percent={65}/>
         <Content type='React' percent={78}/>
         <Content type='Redux TK' percent={65}/>
-        <Content type='Tailwind CSS' percent={50}/>
+        <Content type=' CSS' percent={50}/>
         <Content type='CSS Modules' percent={70}/>
         <Content type='styled components' percent={78}/>
         <Content type='NextJs' percent={40}/>
