@@ -27,33 +27,7 @@
 .paragraph{
     width: 80%;
 }
-.github{
-    padding: 5px;
-    width: 24px;
-    height: 24px;
-    background-image: url("./src/Path.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.linkedIn{
-    padding: 5px;
-    width: 24px;
-    height: 24px;
-    background-image: url("./src/linkedIn.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.twitter{
-    padding: 5px;
-    width: 30px;
-    height: 24px;
-    background-image: url("./src/twitter.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+
 
 
 
