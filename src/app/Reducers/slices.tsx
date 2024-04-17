@@ -36,9 +36,7 @@ export const StateSlice=createSlice({
     initialState,
     reducers:{
         set_page:(state,action)=>{
-        state.page=action.payload
-        window.location=`http://localhost:3000/${action.payload}`
-        
+        // no code here, kept for future use
         },
         set_background:(state,action)=>{
           state.background=action.payload
