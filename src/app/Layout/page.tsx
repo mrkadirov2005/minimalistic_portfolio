@@ -8,7 +8,10 @@ import { useSelector } from "react-redux";
 import {  Outlet } from "react-router-dom";
 import { background, isLoggedIn, page } from "../Reducers/selector";
 
-const LayOutContainer = styled.div`
+interface LocalProps{
+  background:boolean;
+}
+const LayOutContainer = styled.div<LocalProps>`
 background-color: ${(props)=>props.background == true? GlobalStylesInstance._colors.primary.DarkBlue.HEX: (props.background == false)? GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX: GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
 min-height: 94vh;
 width: 100vw;

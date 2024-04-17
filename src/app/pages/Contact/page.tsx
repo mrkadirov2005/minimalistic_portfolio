@@ -8,7 +8,10 @@ import SendMessage from '@/app/components/contactSendMessageComp/sendMessage'
 import { useSelector } from 'react-redux'
 import { Basics } from '@/app/Reducers/reducers'
 
-
+interface LocalProps{
+  background: boolean;
+  inputcolor?:string
+}
 const MainContainer=styled.section`
 background-color: transparent;
 `
@@ -23,14 +26,14 @@ const Label=styled.label`
 color:${(props)=>props.color} ;
 `
 
-const Input=styled.input`
+const Input=styled.input<LocalProps>`
 background-color: ${(props)=>!props.background?"grey":"cyan"};
 color: ${(props)=>props.inputcolor};
 @media (max-width:800px){
   width: 80%;
 }
 `
-const Textarea=styled.textarea`
+const Textarea=styled.textarea<LocalProps>`
 background-color: ${(props)=>!props.background?"grey":"cyan"};
 color: ${(props)=>props.inputcolor};
 @media (max-width:800px){
@@ -45,7 +48,7 @@ const background=info.basics.background
 
 
   const color=background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color
-  const inputcolor=false?GlobalStylesInstance._p.dark.color:GlobalStylesInstance._p.light.color
+  const inputcolor=background==false?GlobalStylesInstance._p.dark.color:GlobalStylesInstance._p.light.color
  
 
   return (

@@ -10,7 +10,10 @@ interface PROPS{
     linkId:string,
     text:string
 }
-const Button=styled.button` 
+interface LocalProps{
+  background:boolean;
+}
+const Button=styled.button<LocalProps>` 
 background-color: transparent;
 text-transform: uppercase;
 border: none;

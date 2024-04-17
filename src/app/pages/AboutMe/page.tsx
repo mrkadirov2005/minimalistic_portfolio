@@ -11,7 +11,10 @@ import { Basics } from "@/app/Reducers/reducers";
 import { useSelector } from "react-redux";
 import Navigator from "@/app/components/header/navigator/navigator";
 
-const DescriptionContainer=styled.div`
+interface LocalProps{
+  background: boolean
+}
+const DescriptionContainer=styled.div<LocalProps>`
 width: 80%;
 color: ${(props)=>props.background==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color};
 display: flex;
@@ -23,7 +26,7 @@ padding: 15px 0px;
 padding-bottom: 100px;
 `
 
-const EducationContainer=styled.div`
+const EducationContainer=styled.div<LocalProps>`
   width: 80%;
   display: flex;
   align-items:center;

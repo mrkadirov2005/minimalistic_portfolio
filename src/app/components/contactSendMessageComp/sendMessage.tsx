@@ -3,8 +3,11 @@ import { background } from '@/app/Reducers/selector'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+interface LocalProps{
+  info:boolean;
+}
 
-const Button=styled.button`
+const Button=styled.button<LocalProps>`
 margin: 15px 0px;
 
 width: 200px;

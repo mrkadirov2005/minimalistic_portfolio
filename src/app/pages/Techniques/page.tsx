@@ -6,13 +6,19 @@ import Content from './technique_components/html'
 import Styles from "./Styles.module.css"
 import { useSelector } from 'react-redux'
 import { background, data } from '@/app/Reducers/selector'
-  const TechniqueWrapper=styled.section`
+
+interface LocalProps{
+  bc: boolean;
+}
+
+
+  const TechniqueWrapper=styled.section<LocalProps>`
     color:${(props)=>props.bc==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
     width: 70%;
     
   `
 
-   const Languages_container_div=styled.div`
+   const Languages_container_div=styled.div<LocalProps>`
    color:${(props)=>props.bc==false?GlobalStylesInstance._p.light.color:GlobalStylesInstance._p.dark.color} ;
  `
 

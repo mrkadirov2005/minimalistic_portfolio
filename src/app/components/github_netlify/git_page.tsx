@@ -7,8 +7,10 @@ import styled from 'styled-components'
 interface propDetails{
     text:string
 }
-
-const Button=styled.button`
+interface LocalProps{
+  info:boolean;
+}
+const Button=styled.button<LocalProps>`
         padding: 5px 10px;
         margin: 7px 15px;
         background-color:${(props)=>props.info?GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX:GlobalStylesInstance._colors.primary.DarkBlue.HEX} ;

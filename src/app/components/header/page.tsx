@@ -14,25 +14,20 @@ interface PROPS{
 state:any,
 dispatch:any
 }
-  const HeaderContainer=styled.header`
+interface LocalProps{
+  background: boolean;
+}
+  const HeaderContainer=styled.header<LocalProps>`
     background-color: ${(props)=>props.background?GlobalStylesInstance._colors.primary.DarkBlue.HEX:GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
   `
 export default function Header() {
   const info=useSelector(background)
 
-const dispatch=useDispatch()
-const navigate=useNavigate()
 
 
 
 console.log(GlobalStylesInstance.H1)
-//TODO here in this place, An object was used instead of styled components
-const LinkStyles={
-  color: info?GlobalStylesInstance._p.dark.color:GlobalStylesInstance._p.light.color,
-  listStyle: 'none',
-  textDecoration: 'none',
-  textTransform: 'uppercase',
-}
+
 
 const handleToggler=()=>{
   // const switcher=document.getElementById('switcher') as HTMLDivElement

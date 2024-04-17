@@ -10,8 +10,11 @@ interface PROPS{
     update_section: React.Dispatch<React.SetStateAction<number>>,
     type:string,
 }
+interface LocalProps{
+    backgroundIn:boolean
+}
 
-const Button=styled.button`
+const Button=styled.button<LocalProps>`
 background-color: ${(props)=>props.backgroundIn==true?GlobalStylesInstance._colors.secondary.veryLightGrey_BG.HEX:GlobalStylesInstance._colors.primary.slightlyDesaturatedCyan.HEX};
 width:176px;
 height:48px;
