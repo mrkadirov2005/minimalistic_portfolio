@@ -1,10 +1,10 @@
-import { GlobalStylesInstance } from "../../../../DATA/settings/Global";
 import Languages from "../../../components/Languages/main";
 import styled from "styled-components";
 import Features from "@/app/components/Features/main";
 import Git_Net from "@/app/components/github_netlify/git_page";
 import Styles from "../styles.module.css";
 import DataProjects from "./data"
+import reorderArray from "./reorder"
 
 interface Project {
   name: string;
@@ -68,17 +68,18 @@ const Paragraph = styled.span`
 `;
 
 export default function ProjectComp() {
-  const bc = true
   const projectsData = DataProjects as { data?: Project[] };
-  const projects = projectsData.data || [];
+  
 
-  const colors = bc
-    ? GlobalStylesInstance._p.dark.color
-    : GlobalStylesInstance._p.light.color;
+
+  const projects = projectsData.data || [];
+  const reversed=reorderArray(projects)
+  
+  
 
   return (
     <Container >
-      {projects.map((project) => (
+      {reversed.map((project) => (
         <ProjectBox key={project.name} className={Styles.animated_project}>
           <h3>{project.name}</h3>
           <div className="date_details">
@@ -89,7 +90,6 @@ export default function ProjectComp() {
           <Linker  href={project.Github} className="github_link">
             check out {project.name} code on{" "}
             <GithubLink href={project.Github}>
-              {" "}
               <Git_Net text="Github" />
             </GithubLink>
           </Linker>

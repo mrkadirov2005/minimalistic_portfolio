@@ -23,8 +23,7 @@ export default function Header() {
   return (
     <HeaderContainer id='header' className={Styles.header}>
       <div>
-        <button>🔼</button>
-        <button>🔽</button>
+       <h1>M</h1>
       </div>
       <ul className={Styles.nav_ul} id='nav_ul'>
         <Navigator linkId='/' text='Home' />

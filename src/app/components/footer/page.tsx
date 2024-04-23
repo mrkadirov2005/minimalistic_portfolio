@@ -43,7 +43,7 @@ const FooterComp = () => {
         <Button onClick={() => navigate('/techniques')} className="next_Link">techniques</Button>
         <Button onClick={() => navigate('/contact')} className="contact-me" id="contact-me-button">contact me</Button>
       </ul>
-      <Links />
+      <Links/>
     </Footer>
   );
 };
