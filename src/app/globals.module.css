@@ -3,6 +3,7 @@
     padding: 0;
     max-width: 1540px;
     overflow-x:hidden;
+    
 }
 .body{
     max-width: 1540px;
@@ -10,11 +11,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     box-sizing: border-box;
     width: 100%;
     margin: 0;
     padding: 0;
+    background-color: darkblue;
+    color: white;
 }
+
+
 
 @media only screen  and (max-width:800px) {
 .html{
