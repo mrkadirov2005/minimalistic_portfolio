@@ -233,6 +233,7 @@
         },
         {
             "name": "weather_app",
+            "vercel":"https://mrkadirov2005-weather.vercel.app/",
             "Github": "https://github.com/mrkadirov2005/search-weather",
             "title": "real_api-connectted-app",
             "info": "This is a project based weather and connected real api",
