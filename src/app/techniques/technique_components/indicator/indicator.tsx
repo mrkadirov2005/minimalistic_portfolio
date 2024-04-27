@@ -11,7 +11,7 @@ interface PROPS{
 
 }
 
-const Illustrator=styled.div<LocalProps>`
+const Illustrator=styled.div`
     width: 100%;
     height: 25px;
 
@@ -26,11 +26,11 @@ const Filler=styled.div<LocalProps>`
 `
 export default function Indicator ({type:type,percent:percent}:PROPS) {
 
-    const bc=true
+  
     const percentage=percent
 
     return (
-    <Illustrator bc={bc} title={type}>
+    <Illustrator title={type}>
       <Filler percent={percentage}  title={`${percent}`}>  {type}</Filler>  
     </Illustrator>
   )
