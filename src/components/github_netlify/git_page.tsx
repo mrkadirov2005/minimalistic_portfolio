@@ -9,7 +9,7 @@ interface PropDetails {
 const Button = styled.button`
     padding: 5px 10px;
     margin: 7px 15px;
-    color: white;
+    color: black;
 `;
 
 const Git_Net = function Git_Net({ text }: PropDetails) {

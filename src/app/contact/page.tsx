@@ -6,7 +6,6 @@ import Links from '@/components/links'
 import SendMessage from '@/components/contactSendMessageComp/sendMessage'
 
 interface LocalProps{
-  background: boolean;
   inputcolor?:string
 }
 const MainContainer=styled.section`
@@ -24,14 +23,16 @@ color:${(props)=>props.color} ;
 `
 
 const Input=styled.input<LocalProps>`
-background-color: ${"cyan"};
+background-color: white;
+outline:none;
 color: ${"black"};
 @media (max-width:800px){
   width: 80%;
 }
 `
 const Textarea=styled.textarea<LocalProps>`
-background-color: ${"cyan"};
+background-color: white;
+outline:none;
 color: ${"black"};
 @media (max-width:800px){
   width: 80%;
@@ -40,7 +41,6 @@ color: ${"black"};
 
 export default function ContactMe() {
 
-const background=true
 
 
   const inputcolor="blue"
@@ -61,13 +61,13 @@ const background=true
 
 <form action="mailto:muzaffar571181@gmail.com" method='post' className={Styles.form}>
   <Label  className={Styles.label}  htmlFor="name">Name</Label> 
-  <Input background={background} inputcolor={inputcolor} className={Styles.input} type="text" id='name' required placeholder='Muzaffar Kadirov' />
+  <Input  inputcolor={inputcolor} className={Styles.input} type="text" id='name' required placeholder='Muzaffar Kadirov' />
 
   <Label   className={Styles.label} htmlFor="email">Email</Label>
-  <Input background={background} inputcolor={inputcolor} className={Styles.input} type="text" id='email' required placeholder='example@gmail.com' />
+  <Input  inputcolor={inputcolor} className={Styles.input} type="text" id='email' required placeholder='example@gmail.com' />
 
   <Label  className={Styles.label} htmlFor="message">Message</Label>
-  <Textarea background={background} inputcolor={inputcolor} className={Styles.textarea}  id='message' required placeholder="write your message here" />
+  <Textarea  inputcolor={inputcolor} className={Styles.textarea}  id='message' required placeholder="write your message here" />
   <SendMessage/>
 </form>
 
