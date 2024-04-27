@@ -1,3 +1,4 @@
+"use client"
 import { useState } from 'react';
 import Styles from './page.module.css';
 import Link from 'next/link';
