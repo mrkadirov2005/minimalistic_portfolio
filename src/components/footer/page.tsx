@@ -35,7 +35,7 @@ const FooterComp = () => {
         <Button className="routers">🔽</Button>
       </div>
       <ul className="nav_ul">
-        <Link href='/home'  className="next_Link_header">home</Link>
+        <Link href='/'  className="next_Link_header">home</Link>
         <Link href='/about'  className="next_Link_header">about me</Link>
         <Link href='/projects'  className="next_Link_header">projects</Link>
         <Link href='/techniques'  className="next_Link_header">techniques</Link>
