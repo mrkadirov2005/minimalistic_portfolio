@@ -6,8 +6,8 @@ import ChangeSectionBtn from "@/components/change_section/main";
 import First_semester from "./Data/first_semester.";
 import Second_semester from "./Data/second_semester";
 import Link from "next/link";
-import {setText} from "./text_field"
-import { setInterval } from "timers";
+import './animation.css'
+
 const DescriptionContainer = styled.div`
   width: 80%;
   display: flex;
@@ -31,34 +31,8 @@ const EducationContainer = styled.div`
 export default function AboutMe() {
   const [section, setSection] = useState<number>(1);
   const [semester, setSemester] = useState<number>(1);
-  localStorage.setItem("count",JSON.stringify(0))
 
-
-
-
-  let intervalId = setInterval(() => {
-    updater();
-}, 15000);
-
-function updater() {
-    const count: number | null = Number(localStorage.getItem("count"));
-    setText(count);
-    localStorage.setItem("count", JSON.stringify(count >= 5 ? 1 : count + 1));
-}
-
-// Call updater initially
-updater();
-
-// Function to clear the interval and restart it
-function restartInterval() {
-    clearInterval(intervalId); // Clear the existing interval
-    intervalId = setInterval(() => {
-        updater();
-    }, 15000); // Start a new interval
-}
-
-
-
+  
  
 
 
@@ -66,7 +40,13 @@ function restartInterval() {
     return (
       <DescriptionContainer className={Styles.description}>
         <div className={Styles.description_image}>
-        <h1 style={{display:"flex",fontSize:"15px"}} id="classic">A 19 year old student</h1>
+        <h1  className="anime1">A 19 year old Software Engineer</h1>
+        <h1  className="anime2">A student of MU university</h1>
+        <h1  className="anime3">Holder of IELTS 7+</h1>
+        <h1  className="anime4">Holder of international IT certificates</h1>
+        <h1  className="anime5">Front-end developer</h1>
+        <h1  className="anime6">backend_developer</h1>
+        <h1  className="anime7">full_stack</h1>
         </div>
         <div className={Styles.description_details}>
           <h1 className="Description_heading">About Me</h1>

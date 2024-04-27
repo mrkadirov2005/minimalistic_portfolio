@@ -1,0 +1,225 @@
+@keyframes anime1 {
+    0%{
+        display:flex;
+        }
+        18%{
+            display: none;
+        }
+        35%{
+            display: none;
+        }
+        50%{
+            display: none;
+        }
+        65%{
+            display: none;
+        }
+        80%{
+            display: none;
+        }
+        100%{
+            display: none;
+        }
+    
+}
+
+
+@keyframes anime2 {
+    0%{
+        display:none;
+        }
+        18%{
+            display: flex;
+        }
+        35%{
+            display: none;
+        }
+        50%{
+            display: none;
+        }
+        65%{
+            display: none;
+        }
+        80%{
+            display: none;
+        }
+        100%{
+            display: none;
+        }
+    
+}
+
+
+@keyframes anime3 {
+    0%{
+        display:none;
+        }
+        18%{
+            display: none;
+        }
+        35%{
+            display: flex;
+        }
+        50%{
+            display: none;
+        }
+        65%{
+            display: none;
+        }
+        80%{
+            display: none;
+        }
+        100%{
+            display: none;
+        }
+    
+}
+
+@keyframes anime4 {
+    0%{
+        display:none;
+        }
+        18%{
+            display: none;
+        }
+        35%{
+            display: none;
+        }
+        50%{
+            display: flex;
+        }
+        65%{
+            display: none;
+        }
+        80%{
+            display: none;
+        }
+        100%{
+            display: none;
+        }
+    
+}
+
+
+@keyframes anime5 {
+    0%{
+        display:none;
+        }
+        18%{
+            display: none;
+        }
+        35%{
+            display: none;
+        }
+        50%{
+            display: none;
+        }
+        65%{
+            display: flex;
+        }
+        80%{
+            display: none;
+        }
+        100%{
+            display: none;
+        }
+    
+}
+
+@keyframes anime6 {
+    0%{
+        display:none;
+        }
+        18%{
+            display: none;
+        }
+        35%{
+            display: none;
+        }
+        50%{
+            display: none;
+        }
+        65%{
+            display: none;
+        }
+        80%{
+            display: flex;
+        }
+        100%{
+            display: none;
+        }
+    
+}
+
+@keyframes anime7{
+    0%{
+        display:none;
+        }
+        18%{
+            display: none;
+        }
+        35%{
+            display: none;
+        }
+        50%{
+            display: none;
+        }
+        65%{
+            display: none;
+        }
+        80%{
+            display: none;
+        }
+        100%{
+            display: flex;
+        }
+    
+}
+
+.anime1{
+    font-size:20px;
+    animation-name: anime1;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+}
+
+.anime2{
+    font-size:20px;
+    animation-name: anime2;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+}
+
+.anime3{
+    font-size:20px;
+    animation-name: anime3;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+}
+
+.anime4{
+    font-size:20px;
+    animation-name: anime4;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+}
+
+.anime5{
+    font-size:20px;
+    animation-name: anime5;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+}
+
+.anime6{
+    font-size:20px;
+    animation-name: anime6;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+}
+.anime7{
+    font-size:20px;
+    animation-name: anime7;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+}
