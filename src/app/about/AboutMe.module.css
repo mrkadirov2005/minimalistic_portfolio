@@ -17,17 +17,7 @@
     width: 96%;
     height: auto;
 }
-.description_image{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-image: url("../Home//__home_page/my_app.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 370px;
-    height: 358px;
-}
+
 
 .description_details{
     width: 40%;
