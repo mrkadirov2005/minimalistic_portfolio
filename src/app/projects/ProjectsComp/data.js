@@ -232,6 +232,16 @@
             "languages": ["HTML", "CSS", "JS", "REACT"]
         },
         {
+            "name":"Calculator",
+            "Github":"https://github.com/mrkadirov2005/Calculator",
+            "title":"Calculator",
+            "info":"Calculator App developed By @mr_kadirov.",
+            "date":"un/02-03/2024",
+            "vercel":"https://calculator-ten-gamma-80.vercel.app/",
+            "details":{"responsive":true,"desktop":true,"mobile":true,"tablet":true},
+            "languages":["HTML","CSS","JS"]
+        },
+        {
             "name": "weather_app",
             "vercel":"https://mrkadirov2005-weather.vercel.app/",
             "Github": "https://github.com/mrkadirov2005/search-weather",
@@ -255,12 +265,13 @@
             "name":"Minimalistic portfolio",
             "Github":"",
             "title":"portfolio",
-            "info":"This is the newest Projects I have Done and I am still working on it as it is planned to be used on the purpose of showing off my programming skills.",
+            "info":"A project built on the purpose of showcasing the projects accomplished by me and the  programming skills I have acquired.",
             "date":"un/01-02/2024",
             "vercel":"",
             "details":{"responsive":false,"desktop":true,"mobile":true,"tablet":true},
             "languages":["HTML","CSS","JS","React+Redux TK","TS","Next JS",]
         },
+        
 
     ]
 }
