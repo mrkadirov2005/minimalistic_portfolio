@@ -90,6 +90,7 @@
     background-color: purple;
     right: 0;
     top: 25px;
+    z-index: 1000;
 }
 .responsive_mobile_dis{
     display: none;
