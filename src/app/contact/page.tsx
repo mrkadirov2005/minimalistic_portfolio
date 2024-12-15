@@ -41,7 +41,14 @@ color: ${"black"};
 
 export default function ContactMe() {
 
-
+const download_cv=()=>{
+  const fileURL="/updated_RSM.pdf"
+  const anchor=document.createElement("a")
+  anchor.href=fileURL
+  anchor.download="updated_RSM.pdf";
+  anchor.click()
+  console.log("downloading")
+}
 
   const inputcolor="blue"
  
@@ -53,13 +60,14 @@ export default function ContactMe() {
 <div className={Styles.get_in_touch_container_manager}>
   <p className={Styles.paragraph} >I’d love to hear about what you’re working on and how I could help. I’m currently looking for a new role and am open to a wide range of opportunities. My preference would be to find a position in a company in London. But I’m also happy to hear about opportunites that don’t fit that description. I’m a hard-working and positive person who will always approach each task with a sense of purpose and attention to detail. Please do feel free to check out my online profiles below and get in touch using the form.</p>
   <Links/>
+  <button className={Styles['download_cv']} onClick={()=>download_cv()}>Download CV</button>
 </div>
 </div>
 
 <div className={Styles.contact_me_wrapper}>
 <Heading >Contact me</Heading>
 
-<form action="mailto:muzaffar571181@gmail.com" method='post' className={Styles.form}>
+{/* <form action="mailto:muzaffar571181@gmail.com" method='post' className={Styles.form}>
   <Label  className={Styles.label}  htmlFor="name">Name</Label> 
   <Input  inputcolor={inputcolor} className={Styles.input} type="text" id='name' required placeholder='Muzaffar Kadirov' />
 
@@ -69,7 +77,7 @@ export default function ContactMe() {
   <Label  className={Styles.label} htmlFor="message">Message</Label>
   <Textarea  inputcolor={inputcolor} className={Styles.textarea}  id='message' required placeholder="write your message here" />
   <SendMessage/>
-</form>
+</form> */}
 
 </div>
 

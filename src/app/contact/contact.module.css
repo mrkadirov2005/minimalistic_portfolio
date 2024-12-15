@@ -87,3 +87,17 @@
         width: 100%;
     }
 }
+
+
+/* download_button_styles */
+.download_cv{
+    width: 145px;
+    height: 30px;
+    background-image:linear-gradient(green,blue,red);
+    color: white;
+}
+.download_cv:hover{
+    width: 160px;
+    height: 45px;
+    background-image:linear-gradient(red,blue,green);
+}

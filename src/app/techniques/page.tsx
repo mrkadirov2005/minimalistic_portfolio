@@ -45,18 +45,31 @@ export default function TechniquesPage() {
       <H3 className={Styles.skills}> Skills</H3>
 
      <div className={Styles.content_container}>
-       
+       <h1>Programming Languages</h1>
+        <Content type='JavaScript' percent={55}/>
+        <Content type='TypeScript' percent={55}/>
+        <Content type='Python' percent={50}/>
+        <Content type='C' percent={30}/>
+        <Content type='VBA' percent={40}/>
+        <h1>Front_end_techniques</h1>
         <Content type='HTML' percent={85}/>
         <Content type='CSS' percent={80}/>
-        <Content type='JavaScript' percent={55}/>
-        <Content type='TypeScript' percent={65}/>
-        <Content type='React' percent={78}/>
-        <Content type='Redux TK' percent={65}/>
-        <Content type=' CSS' percent={50}/>
         <Content type='CSS Modules' percent={70}/>
-        <Content type='styled components' percent={78}/>
+        <Content type='Tailwind CSS' percent={78}/>
+        <Content type='React' percent={78}/>
         <Content type='NextJs' percent={40}/>
-        <Content type='Python' percent={40}/>
+        <Content type='styled components' percent={78}/>
+        <Content type='Vite' percent={40}/>
+        <Content type='Redux TK' percent={65}/>
+        <Content type='MUI' percent={80}/>
+        <h1>Backend_techniques</h1>
+        <Content type='NodeJS' percent={40}/>
+        <Content type='ExpressJS' percent={40}/>
+        {/* adding second course skills at the university */}
+        <h1>Databases</h1>
+        <Content type='SQL:MYSQL' percent={50}/>
+        <Content type='NOSQL:MongoDB' percent={50}/>
+
      </div>
 
 

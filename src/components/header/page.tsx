@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header id='header' className={Styles.header}>
       <div>
-        <h1>M</h1>
+        <h1 className={Styles.header_M_logo}>M</h1>
       </div>
       <ul className={Styles.nav_ul} id='nav_ul'>
         <Link className='header_link' style={{ color: "white", textDecoration: "none" }} href='/' >Home</Link>

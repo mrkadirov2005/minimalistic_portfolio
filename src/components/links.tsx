@@ -30,7 +30,7 @@ export default function Links() {
       <Link href={"https://twitter.com/home?lang=en"}>
         <TXT>Twitter</TXT>
       </Link>
-      <Link href={"https://www.linkedin.com/feed/"}>
+      <Link href={"https://www.linkedin.com/in/muzaffar-abduqodirov-0a8b42248/"}>
       <TXT>LinkedIN</TXT>
       </Link>
     </LinksContainer>
