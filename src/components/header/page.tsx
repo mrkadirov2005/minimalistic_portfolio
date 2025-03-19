@@ -17,7 +17,7 @@ export default function Header() {
     <header className={Styles.header}>
       {/* Logo */}
       <div className={Styles.logo_container}>
-        <Image src="/profile_photo.jpg" alt="my Profile photo" className={Styles.header_M_logo} />
+        <Image src="/profile_photo.jpg" width={20} height={20} alt="my Profile photo" className={Styles.header_M_logo} />
       </div>
 
       {/* Desktop Navigation */}
