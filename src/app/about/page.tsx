@@ -1,10 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Styles from "./AboutMe.module.css";
-import ChangeSectionBtn from "@/components/change_section/main";
-import FirstSemester from "./Data/first_semester.";
-import SecondSemester from "./Data/second_semester";
 import Link from "next/link";
 import "./animation.css";
 
@@ -35,8 +32,6 @@ const EducationContainer = styled.div`
 `;
 
 export default function AboutMe() {
-  const [section, setSection] = useState<number>(1);
-  const [semester, setSemester] = useState<number>(1);
 
   const Description = () => {
     return (
@@ -44,15 +39,15 @@ export default function AboutMe() {
         <div className={Styles.description_details}>
           <h1 className={Styles.heading}>About Me</h1>
           <p className={Styles.description_text}>
-            Welcome to my portfolio page! I'm Muzaffar, a **20-year-old** software engineer from **Uzbekistan**.  
-            I have a strong passion for web development, working with modern technologies like **Next.js, React, JS, TS, Tailwind CSS, telegram bots, Node js and Python technologies**, and more.
+            Welcome to my portfolio page! I&apos;m Muzaffar, a <b>20-year-old</b> software engineer from <b>Uzbekistan</b>.
+            I have a strong passion for web development, working with modern technologies like <b>Next.js, React, JS, TS, Tailwind CSS, Telegram bots, Node.js, and Python technologies</b>.
           </p>
           <p>
-            Currently, I'm a **second-year student at Cambridge International University**, majoring in IT.  
-            I'm proficient in English with an **IELTS score of 7+** and hold **international IT certifications**.
+            Currently, I&apos;m a <b>second-year student at Cambridge International University</b>, majoring in IT.
+            I&apos;m proficient in English with an <b>IELTS score of 7+</b> and hold <b>international IT certifications</b>.
           </p>
           <p>
-            I specialize in **Full-stack web**.  
+            I specialize in <b>Full-stack web development</b>.  
             Want to know more? Check out my <Link href="/techniques" className={Styles.resume_link}>resume</Link>.
           </p>
         </div>
@@ -69,37 +64,10 @@ export default function AboutMe() {
     );
   };
 
-  // const Education = () => {
-  //   return (
-  //     <EducationContainer>
-  //       <div>
-  //         <h2 className="course_indicator">University: Cambridge International University</h2>
-  //         {semester === 1 ? <FirstSemester /> : <SecondSemester />}
-  //         <div className={Styles.navigator}>
-  //           {semester !== 1 && (
-  //             <ChangeSectionBtn section_number={semester} update_section={setSemester} type="s-1" />
-  //           )}
-  //           {semester !== 2 && (
-  //             <ChangeSectionBtn section_number={semester} update_section={setSemester} type="s+1" />
-  //           )}
-  //         </div>
-  //       </div>
-  //       <div className={Styles.university_img}></div>
-  //     </EducationContainer>
-  //   );
-  // };
-
   return (
     <section className={Styles.AboutContainer}>
-      {section === 1 ? <Description /> :""}
-      <div className={Styles.section_navigator}>
-        {/* {section > 1 && (
-          <ChangeSectionBtn section_number={section} update_section={setSection} type="-" />
-        )}
-        {section !== 2 && (
-          <ChangeSectionBtn section_number={section} update_section={setSection} type="+" />
-        )} */}
-      </div>
+       <Description /> 
+      
     </section>
   );
 }

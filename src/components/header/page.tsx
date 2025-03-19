@@ -3,6 +3,7 @@ import { useState } from "react";
 import Styles from "./page.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,7 +17,7 @@ export default function Header() {
     <header className={Styles.header}>
       {/* Logo */}
       <div className={Styles.logo_container}>
-        <img src="/profile_photo.jpg" className={Styles.header_M_logo} />
+        <Image src="/profile_photo.jpg" alt="my Profile photo" className={Styles.header_M_logo} />
       </div>
 
       {/* Desktop Navigation */}

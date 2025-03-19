@@ -83,7 +83,7 @@ const Button = styled.button`
 
 export default function ContactMe() {
   const downloadCV = () => {
-    const fileURL = "/updated_RSM.pdf";
+    const fileURL = "/updated_RSM.pdf"; // Ensure the file is in the `public` folder
     const anchor = document.createElement("a");
     anchor.href = fileURL;
     anchor.download = "updated_RSM.pdf";
@@ -97,9 +97,9 @@ export default function ContactMe() {
       <section className={Styles.get__in_touch_info_part}>
         <Heading>Get in Touch</Heading>
         <Paragraph>
-          I’d love to hear about what you’re working on and how I could help.
-          I'm currently looking for new opportunities, preferably remote, but
-          I’m open to all possibilities.
+          I&apos;d love to hear about what you&apos;re working on and how I could help.
+          I&apos;m currently looking for new opportunities, preferably remote, but
+          I&apos;m open to all possibilities.
         </Paragraph>
         <Links />
         <Button onClick={downloadCV}>Download CV</Button>
