@@ -3,7 +3,6 @@ import React from "react";
 import styled from "styled-components";
 import Links from "../links";
 import Link from "next/link";
-import "./page.css";
 
 const Footer = styled.footer`
   width: 100%;
