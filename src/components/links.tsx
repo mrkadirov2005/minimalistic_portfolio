@@ -6,6 +6,7 @@ const LinksContainer = styled.div`
   width: 250px;
   display: flex;
   align-items: center;
+  flex-wrap:wrap;
   justify-content: space-between;
   @media (max-width: 800px) {
     width: 25%;
