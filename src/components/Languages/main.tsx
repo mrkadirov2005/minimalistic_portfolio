@@ -7,6 +7,8 @@ interface Props {
 
 const LanguagesContainer = styled.ol`
     display: flex;
+    flex-wrap:wrap;
+    gap:5;
     align-items: center;
     justify-content: space-around;
     width: 80%;

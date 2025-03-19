@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
 import styled from 'styled-components'
+import "./styles.css";
 interface LocalProps{
     percent:number;
 }
@@ -23,6 +23,7 @@ const Filler=styled.div<LocalProps>`
     font-size: 15px;
     display: flex;
     align-items: center;
+    
 `
 export default function Indicator ({type:type,percent:percent}:PROPS) {
 
@@ -30,8 +31,8 @@ export default function Indicator ({type:type,percent:percent}:PROPS) {
     const percentage=percent
 
     return (
-    <Illustrator title={type}>
-      <Filler percent={percentage}  title={`${percent}`}>  {type}</Filler>  
+    <Illustrator className='filler'  title={type}>
+      <Filler className='inner_filler'  percent={percentage}  title={`${percent}`}>  {type}</Filler>  
     </Illustrator>
   )
 }

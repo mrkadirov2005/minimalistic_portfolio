@@ -1,50 +1,67 @@
-"use client"
-import { useState } from 'react';
-import Styles from './page.module.css';
-import Link from 'next/link';
+"use client";
+import { useState } from "react";
+import Styles from "./page.module.css";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Header() {
-  const handleChangeColor = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const target = e.target as HTMLButtonElement;
-    document.body.style.backgroundColor = target.value;
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleChangeColor = (color: string) => {
+    document.body.style.transition = "background-color 0.5s ease-in-out";
+    document.body.style.backgroundColor = color;
   };
 
-  const [state, setState] = useState<boolean>(false);
-
   return (
-    <header id='header' className={Styles.header}>
-      <div>
-        <h1 className={Styles.header_M_logo}>M</h1>
+    <header className={Styles.header}>
+      {/* Logo */}
+      <div className={Styles.logo_container}>
+        <img src="/profile_photo.jpg" className={Styles.header_M_logo} />
       </div>
-      <ul className={Styles.nav_ul} id='nav_ul'>
-        <Link className='header_link' style={{ color: "white", textDecoration: "none" }} href='/' >Home</Link>
-        <Link className='header_link' style={{ color: "white", textDecoration: "none" }} href='/about' >about</Link>
-        <Link className='header_link' style={{ color: "white", textDecoration: "none" }} href='/projects' >projects</Link>
-        <Link className='header_link' style={{ color: "white", textDecoration: "none" }} href='/techniques' >techniques</Link>
-        <Link className='header_link' style={{ color: "white", textDecoration: "none" }} href='/contact' >contact</Link>
-      </ul>
 
-      <ul className={!state ? Styles['responsive_mobile_dis'] : Styles['responsive_mobile']} id='responsive_mobile'>
-        <Link className='responsive_header_link' style={{ color: "white", textDecoration: "none", fontSize: !state ? 0 : "18px" }} href='/' >Home</Link>
-        <Link className='responsive_header_link' style={{ color: "white", textDecoration: "none", fontSize: !state ? 0 : "18px" }} href='/about' >about</Link>
-        <Link className='responsive_header_link' style={{ color: "white", textDecoration: "none", fontSize: !state ? 0 : "18px" }} href='/projects' >projects</Link>
-        <Link className='responsive_header_link' style={{ color: "white", textDecoration: "none", fontSize: !state ? 0 : "18px" }} href='/techniques' >techniques</Link>
-        <Link className='responsive_header_link' style={{ color: "white", textDecoration: "none", fontSize: !state ? 0 : "18px" }} href='/contact' >contact</Link>
-      </ul>
-      
-      <div className={Styles.background_setter}>background
+      {/* Desktop Navigation */}
+      <nav className={`${Styles.nav_ul} ${menuOpen ? Styles.hidden : ""}`}>
+        <Link className={Styles.header_link} href="/">Home</Link>
+        <Link className={Styles.header_link} href="/about">About</Link>
+        <Link className={Styles.header_link} href="/projects">Projects</Link>
+        <Link className={Styles.header_link} href="/techniques">Techniques</Link>
+        <Link className={Styles.header_link} href="/contact">Contact</Link>
+      </nav>
+
+      {/* Mobile Navigation */}
+      <motion.nav
+        className={`${Styles.mobile_nav} ${menuOpen ? Styles.active : ""}`}
+        initial={{ x: "100%" }}
+        animate={{ x: menuOpen ? 0 : "100%" }}
+        transition={{ duration: 0.3 }}
+      >
+        <button className={Styles.close_button} onClick={() => setMenuOpen(false)}>✖</button>
+        <Link className={Styles.mobile_link} href="/" onClick={() => setMenuOpen(false)}>Home</Link>
+        <Link className={Styles.mobile_link} href="/about" onClick={() => setMenuOpen(false)}>About</Link>
+        <Link className={Styles.mobile_link} href="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
+        <Link className={Styles.mobile_link} href="/techniques" onClick={() => setMenuOpen(false)}>Techniques</Link>
+        <Link className={Styles.mobile_link} href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+      </motion.nav>
+
+      {/* Background Color Changer */}
+      <div className={Styles.background_setter}>
+        <span>Background:</span>
         <div className={Styles.background_inner}>
-          <button value={"black"} className={Styles.color_button} onClick={(e) => handleChangeColor(e)}>black</button>
-          <button value={"purple"} className={Styles.color_button} onClick={(e) => handleChangeColor(e)}>purple</button>
-          <button value={"green"} className={Styles.color_button} onClick={(e) => handleChangeColor(e)}>green</button>
-          <button value={"blue"} className={Styles.color_button} onClick={(e) => handleChangeColor(e)}>blue</button>
-          <button value={"darkblue"} className={Styles.color_button} onClick={(e) => handleChangeColor(e)}>darkblue</button>
-          <button value={"orange"} className={Styles.color_button} onClick={(e) => handleChangeColor(e)}>orange</button>
-          <button value={"grey"} className={Styles.color_button} onClick={(e) => handleChangeColor(e)}>grey</button>
+          {["black", "purple", "green", "blue", "darkblue", "orange", "grey"].map((color) => (
+            <button
+              key={color}
+              className={Styles.color_button}
+              style={{ backgroundColor: color }}
+              onClick={() => handleChangeColor(color)}
+            />
+          ))}
         </div>
       </div>
-      
-      <button className={Styles.toggler_header} onClick={() => setState(!state)}>{state ? "X" : "D"}</button>
+
+      {/* Mobile Menu Toggle Button */}
+      <button className={Styles.toggler_header} onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? "✖" : "☰"}
+      </button>
     </header>
   );
 }

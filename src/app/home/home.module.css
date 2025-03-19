@@ -1,138 +1,112 @@
-.home{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    color: white;
-}
-.img_section{
-    height: 500px;
-    width:96%; 
-    background-image: url("__home_page/Bitmap.png") !important;
-    position: relative;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-top: 25px;
-}
-.Heading{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 400px;
-    margin: 0;
-    font-size: 45px;
-    background-color:purple;
-}
-.my_img{
-    width: 540px;
-    height: 600px;
-    background-image: url("./__home_page//my_app.jpg");
-}
-.about_me_page{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 96%;
-    margin-top: 100px;
-}
-.my_desc{
-    width: 35%;
-}
-.contact_me_section{
-    display: flex;
-    width: 96%;
-    align-items: center;
-    justify-content: space-between;
-    margin: 95px 0;
-    
-}
-.my_img{
-    width: 400px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 400px;
+/* ====== General Styling ====== */
+.home {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color:white !important;
 }
 
+/* ====== Hero Section ====== */
+.hero_section {
+  text-align: center;
+  padding: 60px 0;
+  color:white !important;
 
-@media(max-width:1000px){
-    .about_me_page{
-        flex-direction: column;
-    }
-   
-    .my_desc{
-        width: 80%;
-    }
 }
 
-@media(max-width:800px){
-    .img_section{
-        width: 100%;
-        font-size: 55px;
-        height: 250px;
-    }
-    .Heading{
-        width: 50%;
-        font-size: 30px;
+.hero_heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color:white !important;
 
-    }
-    .about_me_page{
-        flex-direction: column;
-        width: 80%;
-    }
-    .my_desc{
-        width:100%;
-    }
-    .my_img{
-        display: none;
-    }
-    .contact_me_section{
-        flex-direction: column;
-    }
-    .interest_in_project{
-
-    width: 100% !important;
-    }
-    .clickOn{
-        display: none;
-    }
 }
 
+.name {
+  font-weight: bold;
+  border-bottom: 2px solid black;
+  color:white !important;
 
+}
 
-@media(max-width:550px){
-    .img_section{
-        width: 100%;
-        font-size: 11px;
-        height: 250px;
-    }
-    .Heading{
-        width: 200px;
-        font-size: 25px;
+.role {
+  font-weight: bold;
+  text-decoration: underline;
+  color:white !important;
 
-    }
-    .about_me_page{
-        flex-direction: column;
-        width: 80%;
-    }
-    .my_desc{
-        width:100%;
-    }
-    .my_img{
-        display: none;
-    }
-    .contact_me_section{
-        flex-direction: column;
-    }
-    .interest_in_project{
+}
 
-    width: 100% !important;
-    }
-    .clickOn{
-        display: none;
-    }
+.hero_subtext {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #444;
+  color:white !important;
+
+}
+
+/* ====== About Me Section ====== */
+.about_section {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+  color:white !important;
+
+}
+
+.about_heading {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color:white !important;
+
+}
+
+.about_content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  color: #333;
+  color:white !important;
+
+}
+
+.project_link {
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  margin-top: 10px;
+  border-bottom: 2px solid black;
+  transition: 0.3s ease;
+  color:white !important;
+
+}
+
+.project_link:hover {
+  border-bottom: 2px solid transparent;
+  transform: translateY(-2px);
+  color:white !important;
+
+}
+
+/* ====== Contact Section ====== */
+.contact_section {
+  text-align: center;
+  margin-top: 50px;
+  color:white !important;
+
+}
+
+.contact_heading {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.contact_text {
+  font-size: 1.1rem;
+  color: #444;
+  margin-top: 10px;
 }

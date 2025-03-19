@@ -1,0 +1,19 @@
+@keyframes progressBar {
+0%{
+    width: 0%;
+    background-image: linear-gradient(blue,violet);
+}    
+100%{
+    width: 100%;
+}
+}
+
+.filler{
+    animation-name: progressBar;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+}
+
+.inner_filler{
+    background-color: blue;
+}

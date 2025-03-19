@@ -1,47 +1,88 @@
-"use client"
+"use client";
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 import Links from "../links";
 import Link from "next/link";
-import "./page.css"
+import "./page.css";
 
 const Footer = styled.footer`
-  width: 96%;
-  padding: 0 2%;
+  width: 100%;
+  margin:0;
+  padding: 15px 2%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 800px){
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -4px 10px rgba(0, 255, 255, 0.2);
+  position: relative;
+
+  @media (max-width: 800px) {
     flex-direction: column;
-    height: auto;
+    text-align: center;
+    padding: 20px 0;
   }
 `;
 
 const Button = styled.button`
   background-color: transparent;
   border: none;
-  font-size: large;
-  text-transform: uppercase;
-  color: whitesmoke;
+  font-size: 24px;
+  color: white;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+    color: #34d1bf;
+  }
+`;
+
+const NavList = styled.ul`
+  display: flex;
+  gap: 20px;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+`;
+
+const NavLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background: linear-gradient(45deg, #07637a, #34d1bf);
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
+  }
 `;
 
 const FooterComp = () => {
-
   return (
-    <Footer >
+    <Footer>
       <div className="indicators">
         <Button className="routers">🔼</Button>
         <Button className="routers">🔽</Button>
       </div>
-      <ul className="nav_ul">
-        <Link href='/'  className="next_Link_header">home</Link>
-        <Link href='/about'  className="next_Link_header">about me</Link>
-        <Link href='/projects'  className="next_Link_header">projects</Link>
-        <Link href='/techniques'  className="next_Link_header">techniques</Link>
-        <Link href='/contact'  className="contact-me" id="contact-me-button">contact me</Link>
-      </ul>
-      <Links/>
+
+      <NavList>
+        <NavLink href="/">home</NavLink>
+        <NavLink href="/about">about me</NavLink>
+        <NavLink href="/projects">projects</NavLink>
+        <NavLink href="/techniques">techniques</NavLink>
+        <NavLink href="/contact" className="contact-me">contact me</NavLink>
+      </NavList>
+
+      <Links />
     </Footer>
   );
 };

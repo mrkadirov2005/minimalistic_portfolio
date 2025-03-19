@@ -1,54 +1,29 @@
-.nav_ul{
+.nav_ul {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 45%;
-
-}
-.li_item{
-    display: flex;
-    color: white;
-    text-transform: uppercase;
-}
-/* TODO a Link styles for all anchors */
-a{
-    color:white;
-    text-decoration: none;
-}
-.social_media{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 10%;
-}
-.media_button_instagram{
-    background-image:url("./footer_src/instagram.svg");
-    width: 25px;
-    height: 28px;
-    background-color: red;
-    /* background-color: trans; */
-}
-.media_button_linkedin{
-    background-image:url("./footer_src/linkedin.svg");
-    background-color:grey;
-    width: 28px;
-    height: 28px;
-    /* background-color: trans; */
-}
-.media_button_telegram{
-    background-image:url("./footer_src/telegram.svg");
-    width: 28px;
-    height: 28px;
-    background-color: blue;
-    /* background-color: trans; */
-}
-@media (max-width:800px){
-    .nav_ul{
-        width: 95%;
-        flex-wrap: wrap;
-    }
-    .indicators{
-        display: none;
-    }
-
-}
+    gap: 20px;
+  }
+  
+  .contact-me {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .contact-me:hover {
+    box-shadow: 0px 4px 10px rgba(255, 75, 43, 0.4);
+    transform: scale(1.05);
+  }
+  
+  .routers {
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .routers:hover {
+    transform: scale(1.2);
+    color: #34d1bf;
+  }
+  

@@ -1,87 +1,126 @@
-"use client"
-import React  from 'react'
-import Styles from "./contact.module.css"
-import styled from 'styled-components'
-import Links from '@/components/links'
-import SendMessage from '@/components/contactSendMessageComp/sendMessage'
+"use client";
+import React from "react";
+import Styles from "./contact.module.css";
+import styled from "styled-components";
+import Links from "@/components/links";
+import SendMessage from "@/components/contactSendMessageComp/sendMessage";
 
-interface LocalProps{
-  inputcolor?:string
-}
-const MainContainer=styled.section`
-background-color: transparent;
-`
-const Heading=styled.h1`
-color: ${(props)=>props.color};
-margin: 0;
-/* width: 50%; */
-margin-right: auto;
-margin-left:auto;
-`
-const Label=styled.label`
-color:${(props)=>props.color} ;
-`
+const MainContainer = styled.section`
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+`;
 
-const Input=styled.input<LocalProps>`
-background-color: white;
-outline:none;
-color: ${"black"};
-@media (max-width:800px){
-  width: 80%;
-}
-`
-const Textarea=styled.textarea<LocalProps>`
-background-color: white;
-outline:none;
-color: ${"black"};
-@media (max-width:800px){
-  width: 80%;
-}
-`
+const Heading = styled.h1`
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+`;
+
+const Paragraph = styled.p`
+  font-size: 1.1rem;
+  color: #444;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 20px;
+`;
+
+const Label = styled.label`
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s ease;
+  
+  &:focus {
+    border-color: #000;
+  }
+`;
+
+const Textarea = styled.textarea`
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s ease;
+  min-height: 120px;
+  
+  &:focus {
+    border-color: #000;
+  }
+`;
+
+const Button = styled.button`
+  background: black;
+  color: white;
+  font-size: 1rem;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: 20px auto 0;
+  
+  &:hover {
+    background: #333;
+  }
+`;
 
 export default function ContactMe() {
-
-const download_cv=()=>{
-  const fileURL="/updated_RSM.pdf"
-  const anchor=document.createElement("a")
-  anchor.href=fileURL
-  anchor.download="updated_RSM.pdf";
-  anchor.click()
-  console.log("downloading")
-}
-
-  const inputcolor="blue"
- 
+  const downloadCV = () => {
+    const fileURL = "/updated_RSM.pdf";
+    const anchor = document.createElement("a");
+    anchor.href = fileURL;
+    anchor.download = "updated_RSM.pdf";
+    anchor.click();
+    console.log("Downloading CV...");
+  };
 
   return (
-    <MainContainer className={Styles.main}>
-<div className={Styles.get__in_touch_info_part}>
-<Heading  >Get in Touch</Heading>
-<div className={Styles.get_in_touch_container_manager}>
-  <p className={Styles.paragraph} >I’d love to hear about what you’re working on and how I could help. I’m currently looking for a new role and am open to a wide range of opportunities. My preference would be to find a position in a company in London. But I’m also happy to hear about opportunites that don’t fit that description. I’m a hard-working and positive person who will always approach each task with a sense of purpose and attention to detail. Please do feel free to check out my online profiles below and get in touch using the form.</p>
-  <Links/>
-  <button className={Styles['download_cv']} onClick={()=>download_cv()}>Download CV</button>
-</div>
-</div>
+    <MainContainer>
+      {/* Get in Touch Section */}
+      <section className={Styles.get__in_touch_info_part}>
+        <Heading>Get in Touch</Heading>
+        <Paragraph>
+          I’d love to hear about what you’re working on and how I could help.
+          I'm currently looking for new opportunities, preferably remote, but
+          I’m open to all possibilities.
+        </Paragraph>
+        <Links />
+        <Button onClick={downloadCV}>Download CV</Button>
+      </section>
 
-<div className={Styles.contact_me_wrapper}>
-<Heading >Contact me</Heading>
+      {/* Contact Form Section */}
+      <section className={Styles.contact_me_wrapper}>
+        <Heading>Contact Me</Heading>
+        <form action="mailto:muzaffar571181@gmail.com" method="post" className={Styles.form}>
+          <Label htmlFor="name">Name</Label>
+          <Input type="text" id="name" required placeholder="Your Name" />
 
-{/* <form action="mailto:muzaffar571181@gmail.com" method='post' className={Styles.form}>
-  <Label  className={Styles.label}  htmlFor="name">Name</Label> 
-  <Input  inputcolor={inputcolor} className={Styles.input} type="text" id='name' required placeholder='Muzaffar Kadirov' />
+          <Label htmlFor="email">Email</Label>
+          <Input type="email" id="email" required placeholder="your@email.com" />
 
-  <Label   className={Styles.label} htmlFor="email">Email</Label>
-  <Input  inputcolor={inputcolor} className={Styles.input} type="text" id='email' required placeholder='example@gmail.com' />
+          <Label htmlFor="message">Message</Label>
+          <Textarea id="message" required placeholder="Write your message here" />
 
-  <Label  className={Styles.label} htmlFor="message">Message</Label>
-  <Textarea  inputcolor={inputcolor} className={Styles.textarea}  id='message' required placeholder="write your message here" />
-  <SendMessage/>
-</form> */}
-
-</div>
-
-
+          <SendMessage />
+        </form>
+      </section>
     </MainContainer>
-  )
+  );
 }

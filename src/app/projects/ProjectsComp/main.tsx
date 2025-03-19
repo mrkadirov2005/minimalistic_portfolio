@@ -45,13 +45,25 @@ const Linker = styled.a`
 
 const ProjectBox = styled.div`
   width: 40%;
-  border: 3px solid orange;
-  padding: 10px 20px;
-  margin: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  padding: 15px 20px;
+  margin: 15px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+
   &:hover {
-    transform: scale(1.02);
-    background-color: #07637a;
-    color: white;
+    transform: translateY(-5px) scale(1.03);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: orange;
+    box-shadow: 0px 8px 20px rgba(255, 165, 0, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    padding: 10px;
   }
 `;
 
@@ -60,11 +72,15 @@ const GithubLink = styled.a`
 `;
 
 const Paragraph = styled.span`
-  color: ${"white"};
-  padding: 15px 0px;
-  text-decoration: underline grey;
-  line-height: 4px;
-  letter-spacing: 5px;
+  display: block;
+  font-size: 1rem;
+  color: white;
+  margin-top: 10px;
+  padding: 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border-bottom: 1px solid grey;
+  width: fit-content;
 `;
 
 export default function ProjectComp() {

@@ -1,103 +1,46 @@
-
-.main__wrapper{
+.main {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    width: 100%;
-
-}
-.get__in_touch_info_part{
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-around;
-    margin: 0;
-    padding: 0;
-    width:100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 65px;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
-    padding: 65px 0px;
-}
-.get_in_touch_container_manager{
-    flex-direction: column;
-    width: 50%;
-}
-.paragraph{
-    width: 80%;
+    padding: 40px 0;
 }
 
-
-
-
-/* contact form */
-.contact_me_wrapper{
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 15px;
-    margin: 15px;
-}
-.form{
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-}
-.label{
-    width: 100%;
-    padding: 15px 0px;
+.get__in_touch_info_part {
+    text-align: center;
+    max-width: 700px;
 }
 
-.input{
-    width: 100%;
-    height: 30px;
-}
-.textarea{
-    width: 100%;
-    height: 30px;
-    resize: none;
+.paragraph {
+    font-size: 1.1rem;
+    color: #444;
 }
 
-@media (max-width:800px){
-    .get__in_touch_info_part{
-        flex-direction: column;
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .get_in_touch_container_manager{
-        width: 100%;
-    }
-    .paragraph{
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .contact_me_wrapper{
-        flex-direction: column;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .form{
-        width: 100%;
-    }
-}
-
-
-/* download_button_styles */
-.download_cv{
-    width: 145px;
-    height: 30px;
-    background-image:linear-gradient(green,blue,red);
+.download_cv {
+    background: black;
     color: white;
+    font-size: 1rem;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: block;
+    margin: 20px auto;
 }
-.download_cv:hover{
-    width: 160px;
-    height: 45px;
-    background-image:linear-gradient(red,blue,green);
+
+.download_cv:hover {
+    background: #333;
+}
+
+.contact_me_wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 40px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
