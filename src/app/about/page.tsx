@@ -1,13 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 const glow = keyframes`
-  0%, 100% {
-    box-shadow: 0 0 8px 2px #2563eb66;
-  }
+  0%, 100% { 
+    box-shadow: 0 0 8px 2px #2563eb66; 
+  } 
   50% {
     box-shadow: 0 0 16px 4px #2563ebaa;
   }
@@ -155,12 +155,12 @@ export default function AboutMe() {
 
       <Header>About Me</Header>
       <SubHeader>
-        Hello! I'm <b>Muzaffar</b>, a <b>20-year-old</b> software engineer based
+        Hello! I&apos;m <b>Muzaffar</b>, a <b>20-year-old</b> software engineer based
         in <b>Uzbekistan</b> with a passion for building beautiful, scalable,
         and modern web applications using the latest technologies.
       </SubHeader>
       <SubHeader>
-        Currently, I’m pursuing a degree in IT at{" "}
+        Currently, I&apos;m pursuing a degree in IT at{" "}
         <b>Cambridge International University</b>, hold international IT
         certifications, and have a strong command of English (IELTS 7+).
       </SubHeader>
