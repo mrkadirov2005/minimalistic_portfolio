@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import Links from "@/components/links";
-import SendMessage from "@/components/contactSendMessageComp/sendMessage"; // If this is a button with spinner, keep it or replace
+import SendMessage from "@/components/contactSendMessageComp/sendMessage";
 
 const MainContainer = styled.section`
   max-width: 900px;
@@ -133,7 +133,6 @@ const DownloadButton = styled(Button)`
 `;
 
 export default function ContactMe() {
-  // Form state
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [touched, setTouched] = useState({ name: false, email: false, message: false });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -174,9 +173,7 @@ export default function ContactMe() {
     setErrorMsg("");
 
     try {
-      // Simulate async sending, replace with real API or email service later
       await new Promise((res) => setTimeout(res, 1500));
-
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
       setTouched({ name: false, email: false, message: false });
@@ -196,7 +193,7 @@ export default function ContactMe() {
       >
         <Heading>Get in Touch</Heading>
         <Paragraph>
-          I'd love to hear about what you&apos;re working on and how I could help.
+          I&apos;d love to hear about what you&apos;re working on and how I could help.
           I&apos;m currently looking for new opportunities, preferably remote, but
           I&apos;m open to all possibilities.
         </Paragraph>
