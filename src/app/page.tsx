@@ -38,7 +38,6 @@ const socialIcons = [
   { href: "https://t.me/itechnic_me", icon: "📞", label: "Telegram" },
 ];
 
-// All your skills for the carousel:
 const rotatingSkills = [
   "JavaScript", "Python", "Java", "React", "Next.js", "TypeScript",
   "HTML", "CSS", "Bootstrap", "OOP", "FP",
@@ -47,16 +46,14 @@ const rotatingSkills = [
   "SQL: MySQL", "NoSQL: MongoDB", "ENGLISH"
 ];
 
-// Number of visible items on the carousel (like 5 or 7)
 const visibleCount = 7;
 
 export default function HomePage() {
-  const typedHeading = useTypewriter("Hey, I’m Muzaffar, a passionate Full-stack Web Developer,",40);
+  const typedHeading = useTypewriter("Hey, I’m Muzaffar, a passionate Full-stack Web Developer,", 40);
 
   const [darkMode, setDarkMode] = useState(false);
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
-  // Show Back to top button after scroll
   const [showTopBtn, setShowTopBtn] = useState(false);
   useEffect(() => {
     const onScroll = () => setShowTopBtn(window.scrollY > 300);
@@ -64,13 +61,9 @@ export default function HomePage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Scroll to top handler
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  // For rotating carousel, keep track of the current center index to animate rotation
   const [centerIndex, setCenterIndex] = useState(0);
-
-  // Update center index every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCenterIndex((prev) => (prev + 1) % rotatingSkills.length);
@@ -78,49 +71,39 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
-  // Calculate positions for carousel items (using a circle)
-  // We'll use a circular layout in 3D style with scaling and opacity based on position relative to center
-  // The visibleCount defines how many items are visible at once (e.g. 7)
-
-  const getCarouselItemStyle = (index: number) => {
+  const getCarouselItemStyle = (index: number): React.CSSProperties => {
     const total = rotatingSkills.length;
-    // Calculate relative position to center index
     let relativePos = index - centerIndex;
-    // Normalize relativePos for circular loop
     if (relativePos < -total / 2) relativePos += total;
     if (relativePos > total / 2) relativePos -= total;
 
-    // If outside visible range, hide
     if (Math.abs(relativePos) > Math.floor(visibleCount / 2)) {
-      return { opacity: 0, pointerEvents: "none", transform: "scale(0)" };
+      return {
+        opacity: 0,
+        pointerEvents: "none" as React.CSSProperties["pointerEvents"],
+        transform: "scale(0)",
+      };
     }
 
-    // Calculate horizontal position offset, scale and opacity
-    const baseTranslateX = 120; // px offset between items horizontally
+    const baseTranslateX = 120;
     const translateX = relativePos * baseTranslateX;
-
-    // Scale: center item is largest (1), neighbors smaller (down to 0.7)
     const scale = 1 - Math.abs(relativePos) * 0.15;
-
-    // Opacity: center 1, sides 0.5
     const opacity = 1 - Math.abs(relativePos) * 0.3;
-
-    // Z-index higher for center
     const zIndex = visibleCount - Math.abs(relativePos);
 
     return {
       transform: `translateX(${translateX}px) scale(${scale})`,
       opacity,
       zIndex,
-      pointerEvents: "auto",
+      pointerEvents: "auto" as React.CSSProperties["pointerEvents"],
       transition: "all 0.8s ease",
-      position: "absolute" as const,
+      position: "absolute",
       left: "50%",
       top: "50%",
       transformOrigin: "center center",
       userSelect: "none",
       cursor: "default",
-      color: scale < 0.85 ? "#666" : "#2563eb", // highlight center
+      color: scale < 0.85 ? "#666" : "#2563eb",
       fontWeight: scale < 0.85 ? 400 : 700,
       fontSize: scale < 0.85 ? "1rem" : "1.3rem",
       whiteSpace: "nowrap",
@@ -132,7 +115,6 @@ export default function HomePage() {
 
   return (
     <div id="home_page" className={`${Styles.home} ${darkMode ? Styles.dark : ""}`}>
-      {/* Dark mode toggle */}
       <button
         className={Styles.darkToggle}
         onClick={toggleDarkMode}
@@ -172,8 +154,6 @@ export default function HomePage() {
         >
           I specialize in creating <strong>clean, user-friendly</strong> web experiences with modern tech, telegram bots, and more.
         </motion.p>
-
-        {/* Confetti / particle effect */}
         <motion.div
           className={Styles.confetti}
           animate={{ y: [0, -10, 0] }}
@@ -184,7 +164,7 @@ export default function HomePage() {
         </motion.div>
       </motion.section>
 
-      {/* Skills Section with animated bars */}
+      {/* Skills */}
       <motion.section
         className={Styles.skills_section}
         variants={sectionVariants}
@@ -195,12 +175,11 @@ export default function HomePage() {
         <h2 className={Styles.skills_heading}>My Skills</h2>
         <div className={Styles.skills_list}>
           {[
-            { name: "Frontend ", level: 70 },
+            { name: "Frontend", level: 70 },
             { name: "Backend", level: 40 },
             { name: "Telegram Bot", level: 50 },
             { name: "AI integration", level: 40 },
             { name: "DB", level: 60 },
-           
           ].map(({ name, level }) => (
             <div key={name} className={Styles.skill}>
               <span className={Styles.skillName}>{name}</span>
@@ -217,7 +196,7 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      {/* Rotating skills carousel */}
+      {/* Carousel */}
       <motion.section className={Styles.carousel_section} aria-label="Rotating skills carousel">
         <h2 className={Styles.skills_heading}>Tech Stack Carousel</h2>
         <div className={Styles.carousel_container}>
@@ -233,7 +212,7 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      {/* About Me Section */}
+      {/* About */}
       <motion.section
         className={Styles.about_section}
         variants={sectionVariants}
@@ -264,7 +243,7 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      {/* Contact Section */}
+      {/* Contact */}
       <motion.section
         className={Styles.contact_section}
         variants={sectionVariants}
@@ -291,8 +270,6 @@ export default function HomePage() {
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 300 }}>
           <ButtonComp text={"Get in Touch"} page="contact" />
         </motion.div>
-
-        {/* Social icons with tooltip */}
         <div className={Styles.socialIcons}>
           {socialIcons.map(({ href, icon, label }) => (
             <a
@@ -315,7 +292,7 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      {/* Back to Top button */}
+      {/* Back to Top */}
       {showTopBtn && (
         <motion.button
           className={Styles.backToTop}
