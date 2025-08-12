@@ -8,10 +8,21 @@ import Image from "next/image";
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleChangeColor = (color: string) => {
-    document.body.style.transition = "background-color 0.5s ease-in-out";
-    document.body.style.backgroundColor = color;
-  };
+ const gradients: Record<string, string> = {
+  black: "linear-gradient(135deg, #000000, #434343)",
+  purple: "linear-gradient(135deg, #7b2ff7, #f107a3)",
+  green: "linear-gradient(135deg, #11998e, #38ef7d)",
+  blue: "linear-gradient(135deg, #2980b9, #6dd5fa, #00f2fe)",
+  darkblue: "linear-gradient(135deg, #000428, #004e92)",
+  orange: "linear-gradient(135deg, #ff8008, #ffc837)",
+  grey: "linear-gradient(135deg, #bdc3c7, #2c3e50)",
+};
+
+const handleChangeColor = (colorKey: string) => {
+  const gradient = gradients[colorKey] || colorKey;
+  document.body.style.transition = "background 0.5s ease-in-out";
+  document.body.style.background = gradient;
+};
 
   return (
     <header className={Styles.header}>

@@ -9,13 +9,14 @@ import Header from "../header/page";
 const LayOutContainer = styled.div`
   min-height: 94vh;
   width: 100vw;
+  padding-top:200px;
 `;
 
 const Layout = () => {
 
   const GlobalContent = (
     <LayOutContainer className={styles.layout_container}>
-      <Header />
+      {/* <Header /> */}
       <FooterComp />
     </LayOutContainer>
   );

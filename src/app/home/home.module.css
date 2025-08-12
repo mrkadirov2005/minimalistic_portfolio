@@ -97,16 +97,365 @@
   text-align: center;
   margin-top: 50px;
   color:white !important;
+  background:transparent !important;
+
 
 }
 
 .contact_heading {
   font-size: 2rem;
   font-weight: 600;
+  color:white !important;
+
 }
 
 .contact_text {
   font-size: 1.1rem;
   color: #444;
   margin-top: 10px;
+  color:white !important;
+
 }
+
+
+
+
+.home {
+  position: relative;
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+}
+
+.hero_section {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.hero_heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111;
+}
+
+.name {
+  color: #2563eb; /* blue-600 */
+  font-weight: 800;
+}
+
+.role {
+  color: #3b82f6; /* blue-500 */
+  font-weight: 700;
+  font-style: italic;
+}
+
+.hero_subtext {
+  margin-top: 1rem;
+  font-size: 1.15rem;
+  color: #555;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about_section {
+  margin-bottom: 5rem;
+  padding: 0 1rem;
+}
+
+.about_content p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.about_heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.project_link {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #2563eb;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+}
+
+.contact_section {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 0.1);
+}
+
+.contact_heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.contact_text {
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+/* Back to top button styling */
+.backToTop {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: #2563eb;
+  border: none;
+  color: white;
+  width: 44px;
+  height: 44px;
+  font-size: 1.8rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.2);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+.backToTop:hover {
+  background-color: #1e40af;
+}
+
+/* Decorative animated blob (a simple circle with low opacity) */
+.decorativeBlob {
+  position: fixed;
+  top: -150px;
+  left: -150px;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border-radius: 50%;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+
+/* .Dark mode styles */
+.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+.dark .hero_subtext,
+.dark .about_content p,
+.dark .contact_text {
+  color: #ccc;
+}
+.dark a,
+.dark .project_link {
+  color: #82aaff;
+}
+.dark .backToTop {
+  background-color: #82aaff;
+}
+.dark .backToTop:hover {
+  background-color: #5577cc;
+}
+
+/* Dark mode toggle */
+.darkToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 1100;
+  user-select: none;
+  color: #2563eb;
+  transition: color 0.3s ease;
+}
+.darkToggle:hover {
+  color: #1e40af;
+}
+
+/* Skills Section */
+.skills_section {
+  margin: 3rem 0;
+}
+.skills_heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.skills_list {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.skill {
+  margin-bottom: 1rem;
+}
+.skillName {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+  color: white;
+}
+.skillBar {
+  height: 10px;
+  background-color: #2563eb;
+  border-radius: 5px;
+  width: 0;
+  color:white !important;
+}
+
+/* 3D Cube */
+.cube_section {
+  perspective: 800px;
+  width: 200px;
+  height: 200px;
+  margin: 3rem auto;
+  position: relative;
+}
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+.cubeFace {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: #2563eb;
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  opacity: 0.9;
+  user-select: none;
+}
+
+/* Position each face of the cube */
+.cubeFace:nth-child(1) {
+  transform: translateZ(90px);
+}
+.cubeFace:nth-child(2) {
+  transform: rotateY(90deg) translateZ(90px);
+}
+.cubeFace:nth-child(3) {
+  transform: rotateY(180deg) translateZ(90px);
+}
+.cubeFace:nth-child(4) {
+  transform: rotateY(-90deg) translateZ(90px);
+}
+.cubeFace:nth-child(5) {
+  transform: rotateX(90deg) translateZ(90px);
+}
+.cubeFace:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(90px);
+}
+
+/* Social Icons */
+.socialIcons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.socialIcon {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #555;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+/* Confetti effect in hero */
+.confetti {
+  font-size: 2rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.7;
+}
+
+/* Back to top button */
+.backToTop {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: #2563eb;
+  border: none;
+  color: white;
+  width: 44px;
+  height: 44px;
+  font-size: 1.8rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.2);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+.backToTop:hover {
+  background-color: #1e40af;
+}
+
+
+
+.carousel_section {
+  margin: 3rem 0;
+  position: relative;
+  height: 120px;
+  overflow: visible;
+  user-select: none;
+}
+
+.carousel_container {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  perspective: 1000px;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.carouselItem {
+  width: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding:5px 15px;
+  margin:5px 15px;
+  transform-style: preserve-3d;
+  color: #2563eb;
+  background-color: rgba(37, 99, 235, 0.15);
+  border-radius: 12px;
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.8s ease;
+}
+
+/* Keep your existing styles for home, dark mode, skill bars, etc. */
+

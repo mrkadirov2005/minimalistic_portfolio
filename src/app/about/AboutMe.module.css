@@ -79,3 +79,27 @@
     }
   }
   
+
+
+  .AboutContainer.dark {
+  background-color: #121212;
+  color: #ddd;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.description_details p {
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.description_image h2 {
+  margin: 8px 0;
+  user-select: none;
+}
+
+.resume_link {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Keep your existing animation classes like anime1, anime2, etc. */
