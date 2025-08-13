@@ -1,312 +1,108 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Styles from "./home/home.module.css";
-import ButtonComp from "@/components/btn/comp";
-import { motion, Variants } from "framer-motion";
-import Link from "next/link";
 
-function useTypewriter(text: string, speed = 50) {
-  const [displayed, setDisplayed] = useState("");
-  useEffect(() => {
-    let currentIndex = 0;
-    const interval = setInterval(() => {
-      setDisplayed((prev) => prev + text[currentIndex]);
-      currentIndex++;
-      if (currentIndex >= text.length) clearInterval(interval);
-    }, speed);
-    return () => clearInterval(interval);
-  }, [text, speed]);
-  return displayed;
-}
+import Sidebar from "@/components/header";
+import Image from "next/image";
+import { useState } from "react";
 
-const sectionVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+export default function Home() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-const skillVariants: Variants = {
-  hidden: { width: 0 },
-  visible: (width) => ({
-    width: `${width}%`,
-    transition: { duration: 1.2, ease: "easeOut" },
-  }),
-};
+  const skills = [
+    "HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Redux", "Node.js", "Express", "Tailwind", "Vite"
+  ];
 
-const socialIcons = [
-  { href: "https://github.com/mrkadirov2005", icon: "🐙", label: "GitHub" },
-  { href: "https://www.linkedin.com/in/muzaffar-abduqodirov-0a8b42248/", icon: "🔗", label: "LinkedIn" },
-  { href: "https://t.me/itechnic_me", icon: "📞", label: "Telegram" },
-];
+  const stats = [
+    { label: "Years of Experience", value: "3+" },
+    { label: "Technologies Learned", value: skills.length.toString() },
+    { label: "Courses Completed", value: "10+" },
+    { label: "Certifications", value: "5" }
+  ];
 
-const rotatingSkills = [
-  "JavaScript", "Python", "Java", "React", "Next.js", "TypeScript",
-  "HTML", "CSS", "Bootstrap", "OOP", "FP",
-  "C", "VBA", "CSS Modules", "Tailwind CSS", "Styled Components",
-  "Vite", "Redux Toolkit", "MUI", "Node.js", "Express.js",
-  "SQL: MySQL", "NoSQL: MongoDB", "ENGLISH"
-];
-
-const visibleCount = 7;
-
-export default function HomePage() {
-  const typedHeading = useTypewriter("Hey, I’m Muzaffar, a passionate Full-stack Web Developer,", 40);
-
-  const [darkMode, setDarkMode] = useState(false);
-  const toggleDarkMode = () => setDarkMode((prev) => !prev);
-
-  const [showTopBtn, setShowTopBtn] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setShowTopBtn(window.scrollY > 300);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
-  const [centerIndex, setCenterIndex] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCenterIndex((prev) => (prev + 1) % rotatingSkills.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const getCarouselItemStyle = (index: number): React.CSSProperties => {
-    const total = rotatingSkills.length;
-    let relativePos = index - centerIndex;
-    if (relativePos < -total / 2) relativePos += total;
-    if (relativePos > total / 2) relativePos -= total;
-
-    if (Math.abs(relativePos) > Math.floor(visibleCount / 2)) {
-      return {
-        opacity: 0,
-        pointerEvents: "none" as React.CSSProperties["pointerEvents"],
-        transform: "scale(0)",
-      };
-    }
-
-    const baseTranslateX = 120;
-    const translateX = relativePos * baseTranslateX;
-    const scale = 1 - Math.abs(relativePos) * 0.15;
-    const opacity = 1 - Math.abs(relativePos) * 0.3;
-    const zIndex = visibleCount - Math.abs(relativePos);
-
-    return {
-      transform: `translateX(${translateX}px) scale(${scale})`,
-      opacity,
-      zIndex,
-      pointerEvents: "auto" as React.CSSProperties["pointerEvents"],
-      transition: "all 0.8s ease",
-      position: "absolute",
-      left: "50%",
-      top: "50%",
-      transformOrigin: "center center",
-      userSelect: "none",
-      cursor: "default",
-      color: scale < 0.85 ? "#666" : "#2563eb",
-      fontWeight: scale < 0.85 ? 400 : 700,
-      fontSize: scale < 0.85 ? "1rem" : "1.3rem",
-      whiteSpace: "nowrap",
-      padding: "6px 12px",
-      borderRadius: "12px",
-      backgroundColor: scale < 0.85 ? "transparent" : "rgba(37, 99, 235, 0.15)",
-    };
-  };
+  const education = [
+    { degree: "Bachelor's", school: "Millat Umidi University (Cambridge International)", year: "2023" },
+    { degree: "Masters (planned)", school: "TBD (USA / Germany / Italy)", year: "2025" }
+  ];
 
   return (
-    <div id="home_page" className={`${Styles.home} ${darkMode ? Styles.dark : ""}`}>
-      <button
-        className={Styles.darkToggle}
-        onClick={toggleDarkMode}
-        aria-label="Toggle dark mode"
-        title="Toggle dark mode"
-      >
-        {darkMode ? "🌞" : "🌙"}
-      </button>
+    <div className="flex min-h-screen bg-gray-50 text-gray-900 relative">
+     
+      <main className="flex-1 p-6 md:ml-72 transition-all duration-300 space-y-12">
+        {/* Profile Section */}
+        <section className="flex flex-col md:flex-row items-center gap-6">
+          <div className="w-40 h-40 relative rounded-full overflow-hidden border-4 border-indigo-500 shadow-lg">
+            <Image
+              src="/profile.jpg" // replace with your image
+              alt="Profile"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <h1 className="text-4xl font-bold mb-2">Muzaffar Abdukadirov</h1>
+            <p className="text-gray-700 text-lg">
+              Software Engineer | Frontend & Fullstack Developer | Passionate about creating interactive web experiences.
+            </p>
+          </div>
+        </section>
 
-      {/* Hero Section */}
-      <motion.section
-        className={Styles.hero_section}
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <h1 className={Styles.hero_heading}>
-          {typedHeading.split("Muzaffar").map((part, i) =>
-            i === 0 ? (
-              <>{part}</>
-            ) : (
-              <React.Fragment key={i}>
-                <span className={Styles.name}>Muzaffar</span>
-                {part}
-              </React.Fragment>
-            )
-          )}
-          <br />
-          <span className={Styles.role}>Full-stack Web Developer</span>.
-        </h1>
-        <motion.p
-          className={Styles.hero_subtext}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
-          I specialize in creating <strong>clean, user-friendly</strong> web experiences with modern tech, telegram bots, and more.
-        </motion.p>
-        <motion.div
-          className={Styles.confetti}
-          animate={{ y: [0, -10, 0] }}
-          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-          aria-hidden="true"
-        >
-          🎉✨🚀
-        </motion.div>
-      </motion.section>
-
-      {/* Skills */}
-      <motion.section
-        className={Styles.skills_section}
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <h2 className={Styles.skills_heading}>My Skills</h2>
-        <div className={Styles.skills_list}>
-          {[
-            { name: "Frontend", level: 70 },
-            { name: "Backend", level: 40 },
-            { name: "Telegram Bot", level: 50 },
-            { name: "AI integration", level: 40 },
-            { name: "DB", level: 60 },
-          ].map(({ name, level }) => (
-            <div key={name} className={Styles.skill}>
-              <span className={Styles.skillName}>{name}</span>
-              <motion.div
-                className={Styles.skillBar}
-                variants={skillVariants}
-                initial="hidden"
-                whileInView="visible"
-                custom={level}
-                viewport={{ once: true, amount: 0.5 }}
-              />
-            </div>
-          ))}
-        </div>
-      </motion.section>
-
-      {/* Carousel */}
-      <motion.section className={Styles.carousel_section} aria-label="Rotating skills carousel">
-        <h2 className={Styles.skills_heading}>Tech Stack Carousel</h2>
-        <div className={Styles.carousel_container}>
-          {rotatingSkills.map((skill, i) => (
+        {/* Statistics Section */}
+        <section className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {stats.map((stat, idx) => (
             <div
-              key={skill + i}
-              style={getCarouselItemStyle(i)}
-              className={Styles.carouselItem}
+              key={idx}
+              className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition text-center"
             >
-              {skill}
+              <p className="text-3xl font-bold text-indigo-600">{stat.value}</p>
+              <p className="text-gray-700 mt-2">{stat.label}</p>
             </div>
           ))}
-        </div>
-      </motion.section>
+        </section>
 
-      {/* About */}
-      <motion.section
-        className={Styles.about_section}
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <div className={Styles.about_content}>
-          <h2 className={Styles.about_heading}>About Me</h2>
-          <p>
-            I’m a <strong>junior full-stack developer and Middle Frontend developer</strong> looking for an exciting role where I can create <strong>intuitive, high-performing</strong> user interfaces.
-          </p>
-          <p>
-            My go-to stack includes <strong>React, TypeScript, Tailwind CSS, Styled-Components, React Router, Node.js</strong>, and more.
-          </p>
-          <p>
-            When I’m not coding, I enjoy <strong>cycling, running, and exploring new places</strong>.
-          </p>
-          <Link href="/projects" className={Styles.project_link}>
-            <motion.span
-              whileHover={{ scale: 1.05, textShadow: "0 0 8px rgb(59, 130, 246)" }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              Check Out My Work →
-            </motion.span>
-          </Link>
-        </div>
-      </motion.section>
-
-      {/* Contact */}
-      <motion.section
-        className={Styles.contact_section}
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <motion.h2
-          className={Styles.contact_heading}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          Let’s Build Something Amazing!
-        </motion.h2>
-        <motion.p
-          className={Styles.contact_text}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-        >
-          Have an idea or a project in mind? I’d love to hear about it.
-        </motion.p>
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 300 }}>
-          <ButtonComp text={"Get in Touch"} page="contact" />
-        </motion.div>
-        <div className={Styles.socialIcons}>
-          {socialIcons.map(({ href, icon, label }) => (
-            <a
-              key={href}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className={Styles.socialIcon}
-              title={label}
-            >
-              <motion.span
-                whileHover={{ scale: 1.3, rotate: 15, color: "#2563eb" }}
-                transition={{ type: "spring", stiffness: 300 }}
+        {/* Skills Section */}
+        <section>
+          <h2 className="text-2xl font-bold mb-4">Skills & Tools</h2>
+          <div className="flex flex-wrap gap-3">
+            {skills.map((skill, idx) => (
+              <span
+                key={idx}
+                className="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full font-medium shadow-sm"
               >
-                {icon}
-              </motion.span>
-            </a>
-          ))}
-        </div>
-      </motion.section>
+                {skill}
+              </span>
+            ))}
+          </div>
+        </section>
 
-      {/* Back to Top */}
-      {showTopBtn && (
-        <motion.button
-          className={Styles.backToTop}
-          onClick={scrollToTop}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          aria-label="Scroll back to top"
-          title="Back to top"
-        >
-          ↑
-        </motion.button>
-      )}
+        {/* Education Section */}
+        <section>
+          <h2 className="text-2xl font-bold mb-4">Education & Achievements</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {education.map((edu, idx) => (
+              <div key={idx} className="bg-white p-5 rounded-2xl shadow hover:shadow-lg transition">
+                <p className="font-semibold text-lg">{edu.degree}</p>
+                <p className="text-gray-600">{edu.school}</p>
+                <p className="text-gray-500">{edu.year}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section>
+          <h2 className="text-2xl font-bold mb-4">Contact & Links</h2>
+          <div className="flex gap-4 flex-wrap">
+            <a href="mailto:your.email@example.com" className="bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:bg-indigo-700 transition">
+              Email
+            </a>
+            <a href="https://github.com/mrkadirov2005" target="_blank" className="bg-gray-800 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-900 transition">
+              GitHub
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
+              LinkedIn
+            </a>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
