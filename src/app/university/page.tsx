@@ -2,29 +2,24 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Container, Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import Sidebar from "@/components/header"; // Your fixed-position sidebar
+import { Container, Typography, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
-// Define a type for each university score row
-interface UniversityScore {
-  id: number;
-  course: string;
-  credit: string;
-  score: string;
-  semester: string;
-}
+export default function Home() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-export default function Home() { 
-  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false); 
-
-  const toggleSidebar = () => { 
-    setSidebarOpen(!sidebarOpen); 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
   };
 
-  const universityScores: UniversityScore[] = [
+  const universityScores = [
+    // Semester 1
     { id: 1, course: "Applied Mathematics 1", credit: "180 / 6", score: "100 / 5", semester: "1" },
     { id: 2, course: "Most Recent History of Uzbekistan", credit: "180 / 6", score: "91 / 5", semester: "1" },
     { id: 3, course: "English for Academic Purposes", credit: "180 / 6", score: "100 / 5", semester: "1" },
     { id: 4, course: "Introduction to Programming 1", credit: "180 / 6", score: "93 / 5", semester: "1" },
+
+    // Semester 2
     { id: 5, course: "Applied Mathematics 2", credit: "180 / 6", score: "100 / 5", semester: "2" },
     { id: 6, course: "Philosophy", credit: "90 / 3", score: "97 / 5", semester: "2" },
     { id: 7, course: "Religious Studies", credit: "90 / 3", score: "87 / 4", semester: "2" },
@@ -32,24 +27,36 @@ export default function Home() {
     { id: 9, course: "English for Specific Purposes", credit: "180 / 6", score: "89 / 4", semester: "2" },
     { id: 10, course: "Introduction to Programming 2", credit: "180 / 6", score: "95 / 5", semester: "2" },
     { id: 11, course: "Introduction to IT", credit: "180 / 6", score: "93 / 5", semester: "2" },
+
+    // Semester 3
     { id: 12, course: "Database Concepts", credit: "240 / 8", score: "100 / 5", semester: "3" },
     { id: 13, course: "Statistics", credit: "300 / 10", score: "100 / 5", semester: "3" },
     { id: 14, course: "Fundamentals of IT", credit: "180 / 6", score: "93 / 5", semester: "3" },
     { id: 15, course: "Computer Science I", credit: "180 / 6", score: "100 / 5", semester: "3" },
+
+    // Semester 4
     { id: 16, course: "Algorithms and Data Structure", credit: "240 / 8", score: "98 / 5", semester: "4" },
     { id: 17, course: "Computer Networks", credit: "300 / 10", score: "95 / 5", semester: "4" },
     { id: 18, course: "Computer Science II", credit: "180 / 6", score: "100 / 5", semester: "4" },
     { id: 19, course: "Object Oriented Programming", credit: "180 / 6", score: "100 / 5", semester: "4" },
+
+    // Semester 5 (upcoming)
     { id: 20, course: "Web Development I", credit: "180 / 6", score: "Upcoming", semester: "5" },
     { id: 21, course: "Game Development", credit: "180 / 6", score: "Upcoming", semester: "5" },
     { id: 22, course: "Mobile App Development", credit: "180 / 6", score: "Upcoming", semester: "5" },
     { id: 23, course: "Elective Courses", credit: "180 / 6", score: "Upcoming", semester: "5" },
+
+    // Semester 6 (upcoming)
     { id: 24, course: "Web Development II", credit: "180 / 6", score: "Upcoming", semester: "6" },
     { id: 25, course: "Computer Security", credit: "180 / 6", score: "Upcoming", semester: "6" },
     { id: 26, course: "Internship", credit: "180 / 6", score: "Upcoming", semester: "6" },
     { id: 27, course: "Elective Courses", credit: "180 / 6", score: "Upcoming", semester: "6" },
+
+    // Semester 7 (upcoming)
     { id: 28, course: "Artificial Intelligence", credit: "180 / 6", score: "Upcoming", semester: "7" },
     { id: 29, course: "Elective Courses", credit: "180 / 6", score: "Upcoming", semester: "7" },
+
+    // Semester 8 (upcoming)
     { id: 30, course: "Internship", credit: "180 / 6", score: "Upcoming", semester: "8" },
     { id: 31, course: "Final Thesis", credit: "180 / 6", score: "Upcoming", semester: "8" },
     { id: 32, course: "Elective Courses", credit: "180 / 6", score: "Upcoming", semester: "8" },
@@ -58,6 +65,7 @@ export default function Home() {
   return (
     <main className="flex">
       {/* Sidebar */}
+      <Sidebar open={sidebarOpen} onToggle={toggleSidebar} />
 
       {/* Main Content */}
       <Container maxWidth="lg" sx={{ marginLeft: sidebarOpen ? "250px" : "80px", transition: "all 0.3s" }}>
@@ -72,22 +80,35 @@ export default function Home() {
           </Typography>
         </Paper>
 
-        {/* Quick Stats (Flexbox, type-safe) */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", marginTop: "16px", justifyContent: "space-between" }}>
-          {[
-            { label: "GPA", value: "4.93" },
-            { label: "Credits Earned", value: "120" },
-            { label: "Average Score", value: "95%+" },
-            { label: "Semesters Completed", value: "4" },
-          ].map((stat, index) => (
-            <Paper key={index} elevation={2} sx={{ flex: "1 1 200px", padding: 3, textAlign: "center" }}>
-              <Typography variant="h5">{stat.value}</Typography>
-              <Typography variant="body2" color="text.secondary">{stat.label}</Typography>
+        {/* Quick Stats */}
+        <Grid container spacing={3} mt={2}>
+          <Grid item xs={12} sm={6} md={3}>
+            <Paper elevation={2} sx={{ padding: 3, textAlign: "center" }}>
+              <Typography variant="h5">4.93</Typography>
+              <Typography variant="body2" color="text.secondary">GPA</Typography>
             </Paper>
-          ))}
-        </div>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Paper elevation={2} sx={{ padding: 3, textAlign: "center" }}>
+              <Typography variant="h5">120</Typography>
+              <Typography variant="body2" color="text.secondary">Credits Earned</Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Paper elevation={2} sx={{ padding: 3, textAlign: "center" }}>
+              <Typography variant="h5">95%+</Typography>
+              <Typography variant="body2" color="text.secondary">Average Score</Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Paper elevation={2} sx={{ padding: 3, textAlign: "center" }}>
+              <Typography variant="h5">4</Typography>
+              <Typography variant="body2" color="text.secondary">Semesters Completed</Typography>
+            </Paper>
+          </Grid>
+        </Grid>
 
-        {/* University Scores Table */}
+        {/* University Scores */}
         <Typography variant="h5" mt={5} mb={2} fontWeight="bold">📚 University Scores</Typography>
         <TableContainer component={Paper}>
           <Table>
@@ -100,8 +121,8 @@ export default function Home() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {universityScores.map((row: UniversityScore) => (
-                <TableRow key={row.id}>
+              {universityScores.map((row) => (
+                <TableRow key={row.id} >
                   <TableCell>{row.semester}</TableCell>
                   <TableCell>{row.course}</TableCell>
                   <TableCell>{row.credit}</TableCell>
@@ -113,5 +134,5 @@ export default function Home() {
         </TableContainer>
       </Container>
     </main>
-  ); 
+  );
 }
