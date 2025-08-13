@@ -16,7 +16,7 @@ const Layout = () => {
 
   const GlobalContent = (
     <LayOutContainer className={styles.layout_container}>
-      {/* <Header /> */}
+      <Header />
       <FooterComp />
     </LayOutContainer>
   );

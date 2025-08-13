@@ -1,312 +1,153 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Styles from "./home/home.module.css";
-import ButtonComp from "@/components/btn/comp";
-import { motion, Variants } from "framer-motion";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import Styles from "./stats/stats.module.css";
+import { motion, useAnimation } from "framer-motion";
+import { FaCode, FaDatabase, FaLaptopCode, FaProjectDiagram } from "react-icons/fa";
+import { SiMongodb, SiMysql, SiJavascript, SiPython, SiTypescript, SiJava, SiVba } from "react-icons/si";
 
-function useTypewriter(text: string, speed = 50) {
-  const [displayed, setDisplayed] = useState("");
-  useEffect(() => {
-    let currentIndex = 0;
-    const interval = setInterval(() => {
-      setDisplayed((prev) => prev + text[currentIndex]);
-      currentIndex++;
-      if (currentIndex >= text.length) clearInterval(interval);
-    }, speed);
-    return () => clearInterval(interval);
-  }, [text, speed]);
-  return displayed;
-}
-
-const sectionVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
-const skillVariants: Variants = {
-  hidden: { width: 0 },
-  visible: (width) => ({
-    width: `${width}%`,
-    transition: { duration: 1.2, ease: "easeOut" },
-  }),
-};
-
-const socialIcons = [
-  { href: "https://github.com/mrkadirov2005", icon: "🐙", label: "GitHub" },
-  { href: "https://www.linkedin.com/in/muzaffar-abduqodirov-0a8b42248/", icon: "🔗", label: "LinkedIn" },
-  { href: "https://t.me/itechnic_me", icon: "📞", label: "Telegram" },
+const statsData = [
+  { icon: <FaProjectDiagram />, label: "Real Projects", value: 10, suffix: "+" },
+  { icon: <FaLaptopCode />, label: "Practice Projects", value: 50, suffix: "+" },
+  { icon: <FaCode />, label: "Programming Languages", value: 5, suffix: "" },
+  { icon: <FaDatabase />, label: "Databases Used", value: 2, suffix: "" },
 ];
 
-const rotatingSkills = [
-  "JavaScript", "Python", "Java", "React", "Next.js", "TypeScript",
-  "HTML", "CSS", "Bootstrap", "OOP", "FP",
-  "C", "VBA", "CSS Modules", "Tailwind CSS", "Styled Components",
-  "Vite", "Redux Toolkit", "MUI", "Node.js", "Express.js",
-  "SQL: MySQL", "NoSQL: MongoDB", "ENGLISH"
+const languages = [
+  { icon: <SiJavascript />, name: "JavaScript" },
+  { icon: <SiPython />, name: "Python" },
+  { icon: <SiTypescript />, name: "TypeScript" },
+  { icon: <SiJava />, name: "Java" },
+  { icon: <SiVba />, name: "VBA" },
 ];
 
-const visibleCount = 7;
+const databases = [
+  { icon: <SiMongodb />, name: "MongoDB" },
+  { icon: <SiMysql />, name: "SQL (MySQL, SQL Workbench)" },
+];
 
-export default function HomePage() {
-  const typedHeading = useTypewriter("Hey, I’m Muzaffar, a passionate Full-stack Web Developer,", 40);
+export default function StatisticsPage() {
+  const controls = useAnimation();
+  const [inView, setInView] = useState(false);
 
-  const [darkMode, setDarkMode] = useState(false);
-  const toggleDarkMode = () => setDarkMode((prev) => !prev);
-
-  const [showTopBtn, setShowTopBtn] = useState(false);
   useEffect(() => {
-    const onScroll = () => setShowTopBtn(window.scrollY > 300);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    if (inView) controls.start("visible");
+  }, [inView, controls]);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const variants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
 
-  const [centerIndex, setCenterIndex] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCenterIndex((prev) => (prev + 1) % rotatingSkills.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  const Counter = ({ value, suffix }: { value: number; suffix?: string }) => {
+    const [count, setCount] = useState(0);
+    useEffect(() => {
+      let start = 0;
+      const end = value;
+      const duration = 1000; // 1s
+      const increment = end / (duration / 16);
 
-  const getCarouselItemStyle = (index: number): React.CSSProperties => {
-    const total = rotatingSkills.length;
-    let relativePos = index - centerIndex;
-    if (relativePos < -total / 2) relativePos += total;
-    if (relativePos > total / 2) relativePos -= total;
-
-    if (Math.abs(relativePos) > Math.floor(visibleCount / 2)) {
-      return {
-        opacity: 0,
-        pointerEvents: "none" as React.CSSProperties["pointerEvents"],
-        transform: "scale(0)",
-      };
-    }
-
-    const baseTranslateX = 120;
-    const translateX = relativePos * baseTranslateX;
-    const scale = 1 - Math.abs(relativePos) * 0.15;
-    const opacity = 1 - Math.abs(relativePos) * 0.3;
-    const zIndex = visibleCount - Math.abs(relativePos);
-
-    return {
-      transform: `translateX(${translateX}px) scale(${scale})`,
-      opacity,
-      zIndex,
-      pointerEvents: "auto" as React.CSSProperties["pointerEvents"],
-      transition: "all 0.8s ease",
-      position: "absolute",
-      left: "50%",
-      top: "50%",
-      transformOrigin: "center center",
-      userSelect: "none",
-      cursor: "default",
-      color: scale < 0.85 ? "#666" : "#2563eb",
-      fontWeight: scale < 0.85 ? 400 : 700,
-      fontSize: scale < 0.85 ? "1rem" : "1.3rem",
-      whiteSpace: "nowrap",
-      padding: "6px 12px",
-      borderRadius: "12px",
-      backgroundColor: scale < 0.85 ? "transparent" : "rgba(37, 99, 235, 0.15)",
-    };
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= end) {
+          start = end;
+          clearInterval(timer);
+        }
+        setCount(Math.floor(start));
+      }, 16);
+      return () => clearInterval(timer);
+    }, [value]);
+    return (
+      <span className={Styles.counter}>
+        {count}
+        {suffix}
+      </span>
+    );
   };
 
   return (
-    <div id="home_page" className={`${Styles.home} ${darkMode ? Styles.dark : ""}`}>
-      <button
-        className={Styles.darkToggle}
-        onClick={toggleDarkMode}
-        aria-label="Toggle dark mode"
-        title="Toggle dark mode"
+    <div className={Styles.container}>
+      {/* Page Heading */}
+      <motion.h1
+        className={Styles.heading}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
       >
-        {darkMode ? "🌞" : "🌙"}
-      </button>
+        My Statistics
+      </motion.h1>
 
-      {/* Hero Section */}
-      <motion.section
-        className={Styles.hero_section}
-        variants={sectionVariants}
+      {/* Stats Grid */}
+      <div className={Styles.statsGrid}>
+        {statsData.map((stat, i) => (
+          <motion.div
+            className={Styles.statCard}
+            key={i}
+            variants={variants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <div className={Styles.icon}>{stat.icon}</div>
+            <Counter value={stat.value} suffix={stat.suffix} />
+            <p>{stat.label}</p>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Languages */}
+      <motion.div
+        className={Styles.section}
+        variants={variants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true }}
       >
-        <h1 className={Styles.hero_heading}>
-          {typedHeading.split("Muzaffar").map((part, i) =>
-            i === 0 ? (
-              <>{part}</>
-            ) : (
-              <React.Fragment key={i}>
-                <span className={Styles.name}>Muzaffar</span>
-                {part}
-              </React.Fragment>
-            )
-          )}
-          <br />
-          <span className={Styles.role}>Full-stack Web Developer</span>.
-        </h1>
-        <motion.p
-          className={Styles.hero_subtext}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
-          I specialize in creating <strong>clean, user-friendly</strong> web experiences with modern tech, telegram bots, and more.
-        </motion.p>
-        <motion.div
-          className={Styles.confetti}
-          animate={{ y: [0, -10, 0] }}
-          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-          aria-hidden="true"
-        >
-          🎉✨🚀
-        </motion.div>
-      </motion.section>
-
-      {/* Skills */}
-      <motion.section
-        className={Styles.skills_section}
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <h2 className={Styles.skills_heading}>My Skills</h2>
-        <div className={Styles.skills_list}>
-          {[
-            { name: "Frontend", level: 70 },
-            { name: "Backend", level: 40 },
-            { name: "Telegram Bot", level: 50 },
-            { name: "AI integration", level: 40 },
-            { name: "DB", level: 60 },
-          ].map(({ name, level }) => (
-            <div key={name} className={Styles.skill}>
-              <span className={Styles.skillName}>{name}</span>
-              <motion.div
-                className={Styles.skillBar}
-                variants={skillVariants}
-                initial="hidden"
-                whileInView="visible"
-                custom={level}
-                viewport={{ once: true, amount: 0.5 }}
-              />
+        <h2>Programming Languages</h2>
+        <div className={Styles.techGrid}>
+          {languages.map((lang, idx) => (
+            <div key={idx} className={Styles.techItem}>
+              <span className={Styles.techIcon}>{lang.icon}</span>
+              {lang.name}
             </div>
           ))}
         </div>
-      </motion.section>
+      </motion.div>
 
-      {/* Carousel */}
-      <motion.section className={Styles.carousel_section} aria-label="Rotating skills carousel">
-        <h2 className={Styles.skills_heading}>Tech Stack Carousel</h2>
-        <div className={Styles.carousel_container}>
-          {rotatingSkills.map((skill, i) => (
-            <div
-              key={skill + i}
-              style={getCarouselItemStyle(i)}
-              className={Styles.carouselItem}
-            >
-              {skill}
+      {/* Databases */}
+      <motion.div
+        className={Styles.section}
+        variants={variants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <h2>Databases & Tools</h2>
+        <div className={Styles.techGrid}>
+          {databases.map((db, idx) => (
+            <div key={idx} className={Styles.techItem}>
+              <span className={Styles.techIcon}>{db.icon}</span>
+              {db.name}
             </div>
           ))}
         </div>
-      </motion.section>
+      </motion.div>
 
-      {/* About */}
-      <motion.section
-        className={Styles.about_section}
-        variants={sectionVariants}
+      {/* About Me */}
+      <motion.div
+        className={Styles.about}
+        variants={variants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true }}
       >
-        <div className={Styles.about_content}>
-          <h2 className={Styles.about_heading}>About Me</h2>
-          <p>
-            I’m a <strong>junior full-stack developer and Middle Frontend developer</strong> looking for an exciting role where I can create <strong>intuitive, high-performing</strong> user interfaces.
-          </p>
-          <p>
-            My go-to stack includes <strong>React, TypeScript, Tailwind CSS, Styled-Components, React Router, Node.js</strong>, and more.
-          </p>
-          <p>
-            When I’m not coding, I enjoy <strong>cycling, running, and exploring new places</strong>.
-          </p>
-          <Link href="/projects" className={Styles.project_link}>
-            <motion.span
-              whileHover={{ scale: 1.05, textShadow: "0 0 8px rgb(59, 130, 246)" }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              Check Out My Work →
-            </motion.span>
-          </Link>
-        </div>
-      </motion.section>
-
-      {/* Contact */}
-      <motion.section
-        className={Styles.contact_section}
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <motion.h2
-          className={Styles.contact_heading}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          Let’s Build Something Amazing!
-        </motion.h2>
-        <motion.p
-          className={Styles.contact_text}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-        >
-          Have an idea or a project in mind? I’d love to hear about it.
-        </motion.p>
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 300 }}>
-          <ButtonComp text={"Get in Touch"} page="contact" />
-        </motion.div>
-        <div className={Styles.socialIcons}>
-          {socialIcons.map(({ href, icon, label }) => (
-            <a
-              key={href}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className={Styles.socialIcon}
-              title={label}
-            >
-              <motion.span
-                whileHover={{ scale: 1.3, rotate: 15, color: "#2563eb" }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                {icon}
-              </motion.span>
-            </a>
-          ))}
-        </div>
-      </motion.section>
-
-      {/* Back to Top */}
-      {showTopBtn && (
-        <motion.button
-          className={Styles.backToTop}
-          onClick={scrollToTop}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          aria-label="Scroll back to top"
-          title="Back to top"
-        >
-          ↑
-        </motion.button>
-      )}
+        <h2>About Me</h2>
+        <p>
+          I am a passionate <strong>Full-stack Web Developer</strong> with expertise in both frontend and backend technologies.
+          My experience includes building <strong>10+ real projects</strong> and <strong>50+ practice projects</strong> in different tech stacks.
+        </p>
+        <p>
+          I love exploring <strong>modern web frameworks</strong>, integrating <strong>databases</strong>, and writing clean, scalable code.
+        </p>
+      </motion.div>
     </div>
   );
 }
