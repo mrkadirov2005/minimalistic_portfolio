@@ -30,7 +30,7 @@ export default function RootLayout({
       >
         {/* Sidebar */}
          <Sidebar />  
-
+    
         {/* Main Content */}
         <main className="flex-1 p-6 ">
           {children}
