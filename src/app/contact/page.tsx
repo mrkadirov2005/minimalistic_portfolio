@@ -13,48 +13,55 @@ import {
 } from "@mui/material";
 import emailjs from "emailjs-com";
 
-// --- CONFIG: replace these with your actual EmailJS values ---
-const SERVICE_ID = "service_f32fe3g"; // your EmailJS service id
-const TEMPLATE_AUTO_REPLY = "template_o9ibn8n"; // template used to auto-reply to visitor (To Email = {{email}})
-const TEMPLATE_NOTIFY = ""; // optional: another template to notify you (leave empty to use same template)
-const PUBLIC_KEY = "VCy6wJug5TClAN6y-"; // your EmailJS public key
-const OWNER_EMAIL = "muzaffar5711181@gmail.com"; // your inbox
-// --------------------------------------------------------------
-  
+// --- CONFIG ---
+const SERVICE_ID = "service_f32fe3g";
+const TEMPLATE_AUTO_REPLY = "template_o9ibn8n";
+const TEMPLATE_NOTIFY = "";
+const PUBLIC_KEY = "VCy6wJug5TClAN6y-";
+const OWNER_EMAIL = "muzaffar5711181@gmail.com";
+// ----------------
+
+interface FormState {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface SnackbarState {
+  open: boolean;
+  message: string;
+  severity: "success" | "error";
+}
+
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [loading, setLoading] = useState(false);
-  const [snackbar, setSnackbar] = useState<{ open: boolean; message: string; severity: "success" | "error" }>({
+  const [form, setForm] = useState<FormState>({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState<boolean>(false);
+  const [snackbar, setSnackbar] = useState<SnackbarState>({
     open: false,
     message: "",
     severity: "success",
   });
- 
+
   useEffect(() => {
-    // initialize EmailJS (optional but recommended)
     try {
       emailjs.init(PUBLIC_KEY);
-    } catch (e) {
-      // some versions of emailjs don't require init when passing publicKey to send
-      // ignore initialization errors
-      // console.warn("emailjs init error:", e);
-    }
+    } catch {}
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const validateEmail = (email: string) => {
+  const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     setLoading(true);
 
-    if (!form.name.trim()  || !form.message.trim()) {
+    if (!form.name.trim() || !form.message.trim()) {
       setSnackbar({ open: true, message: "Please fill out all fields.", severity: "error" });
       setLoading(false);
       return;
@@ -66,36 +73,28 @@ export default function ContactPage() {
       return;
     }
 
-    // Prepare template params - these must match the variable names in your EmailJS template
     const commonParams = {
-      name: form.name, // maps to {{name}} in your auto-reply template
-      email: "muzaffar571181@gmail.com", // maps to {{email}} and used as recipient in auto-reply
-      title: "We\'ve received your message", // maps to {{title}} in template (change if needed)
-      message: form.message, // maps to {{message}} if used in template
+      name: form.name,
+      email: "muzaffar571181@gmail.com",
+      title: "We've received your message",
+      message: form.message,
     };
 
     try {
-      // 1) Notify owner (optional). If you have a dedicated notify template, set TEMPLATE_NOTIFY.
-      // If TEMPLATE_NOTIFY is empty, we'll reuse the auto-reply template but force recipient to OWNER_EMAIL.
       const notifyTemplateId = TEMPLATE_NOTIFY || TEMPLATE_AUTO_REPLY;
       const notifyParams = {
         ...commonParams,
-        // if using a template where To Email is a template variable like {{email}} or {{to_email}},
-        // ensure this param name matches. Here we add both common names to be safe:
         to_email: OWNER_EMAIL,
         recipient_email: OWNER_EMAIL,
       };
 
       await emailjs.send(SERVICE_ID, notifyTemplateId, notifyParams, PUBLIC_KEY);
-
-      // 2) Send auto-reply to visitor using TEMPLATE_AUTO_REPLY which should have "To Email" set to {{email}}
-      const autoReplyParams = { ...commonParams };
-      await emailjs.send(SERVICE_ID, TEMPLATE_AUTO_REPLY, autoReplyParams, PUBLIC_KEY);
+      await emailjs.send(SERVICE_ID, TEMPLATE_AUTO_REPLY, commonParams, PUBLIC_KEY);
 
       setSnackbar({ open: true, message: "Message sent! We will contact you soon.", severity: "success" });
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error("EmailJS error:", error);
+      console.error(error);
       setSnackbar({ open: true, message: "Failed to send message. Try again later.", severity: "error" });
     } finally {
       setLoading(false);
@@ -127,7 +126,6 @@ export default function ContactPage() {
             required
             margin="normal"
           />
-          
           <TextField
             label="Message"
             name="message"

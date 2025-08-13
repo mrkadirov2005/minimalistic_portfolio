@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 type CourseType = "online" | "university";
 type StatusType = "completed" | "in-progress";
+type FilterType = "all" | StatusType;
 
 interface Course {
   id: string;
@@ -25,22 +26,24 @@ const onlineCourses: Course[] = [
 ];
 
 export default function OnlineCourses() {
-  const [filter, setFilter] = useState<"all" | "completed" | "in-progress">("all");
+  const [filter, setFilter] = useState<FilterType>("all");
 
   const filteredCourses = onlineCourses.filter(course => {
     if (filter === "all") return true;
     return course.status === filter;
   });
 
+  const filterOptions: FilterType[] = ["all", "completed", "in-progress"];
+
   return (
     <div style={{ padding: "24px" }}>
       {/* Filter Buttons */}
       <Stack direction="row" spacing={1} sx={{ mb: 3, flexWrap: "wrap", gap: "8px" }}>
-        {["all", "completed", "in-progress"].map(f => (
+        {filterOptions.map(f => (
           <Button
             key={f}
             variant={filter === f ? "contained" : "outlined"}
-            onClick={() => setFilter(f as any)}
+            onClick={() => setFilter(f)}
           >
             {f.charAt(0).toUpperCase() + f.slice(1)}
           </Button>
