@@ -62,6 +62,7 @@ export default function Home() {
       {/* Main Content */}
       <Container maxWidth="lg" sx={{ marginLeft: sidebarOpen ? "250px" : "80px", transition: "all 0.3s" }}>
         {/* Hero / About Me */}
+        <Image alt="university picture" width={200} height={200} src="/university.png"></Image>
         <Paper elevation={3} sx={{ padding: 4, marginTop: 4, textAlign: "center" }}>
           <Image src="/profile.jpg" alt="Profile" width={120} height={120} style={{ borderRadius: "50%" }} />
           <Typography variant="h4" fontWeight="bold" mt={2}>Muzaffar Abdukadirov</Typography>

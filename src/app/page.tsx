@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
 
   const skills = [
-    "HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Redux", "Node.js", "Express", "Tailwind", "Vite"
+    "HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Redux", "Node.js", "Express", "Tailwind", "Vite","Python","Java","C","VBA","Mongo","SQL"
   ];
 
   const stats = [
@@ -75,11 +76,11 @@ export default function Home() {
           <h2 className="text-2xl font-bold mb-4">Education & Achievements</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {education.map((edu, idx) => (
-              <div key={idx} className="bg-white p-5 rounded-2xl shadow hover:shadow-lg transition">
+              <Link href="/university"><div key={idx} className="bg-white p-5 rounded-2xl shadow hover:shadow-lg transition">
                 <p className="font-semibold text-lg">{edu.degree}</p>
                 <p className="text-gray-600">{edu.school}</p>
                 <p className="text-gray-500">{edu.year}</p>
-              </div>
+              </div></Link>
             ))}
           </div>
         </section>
@@ -94,7 +95,7 @@ export default function Home() {
             <a href="https://github.com/mrkadirov2005" target="_blank" className="bg-gray-800 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-900 transition">
               GitHub
             </a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
+            <a href="https://www.linkedin.com/in/muzaffar-abduqodirov-0a8b42248/" target="_blank" className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
               LinkedIn
             </a>
           </div>
