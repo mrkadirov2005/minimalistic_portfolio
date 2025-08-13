@@ -1,11 +1,8 @@
 "use client";
 
-import Sidebar from "@/components/header";
 import Image from "next/image";
-import { useState } from "react";
 
 export default function Home() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const skills = [
     "HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Redux", "Node.js", "Express", "Tailwind", "Vite"
