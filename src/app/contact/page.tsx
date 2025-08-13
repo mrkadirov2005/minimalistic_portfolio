@@ -20,7 +20,7 @@ const TEMPLATE_NOTIFY = ""; // optional: another template to notify you (leave e
 const PUBLIC_KEY = "VCy6wJug5TClAN6y-"; // your EmailJS public key
 const OWNER_EMAIL = "muzaffar5711181@gmail.com"; // your inbox
 // --------------------------------------------------------------
-
+  
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ export default function ContactPage() {
     message: "",
     severity: "success",
   });
-
+ 
   useEffect(() => {
     // initialize EmailJS (optional but recommended)
     try {

@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen bg-gray-50 text-gray-900 relative">
      
-      <main className="flex-1 p-6 md:ml-72 transition-all duration-300 space-y-12">
+      <main className="flex-1 p-6  transition-all duration-300 space-y-12">
         {/* Profile Section */}
         <section className="flex flex-col md:flex-row items-center gap-6">
           <div className="w-40 h-40 relative rounded-full overflow-hidden border-4 border-indigo-500 shadow-lg">
